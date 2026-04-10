@@ -10,6 +10,19 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# Clean URLs for portfolio showcase pages
+[[redirects]]
+  from = "/portfolio/:slug"
+  to = "/showcase.html?id=:slug"
+  status = 200
+
+# Pretty URL for portfolio index
+[[redirects]]
+  from = "/portfolio"
+  to = "/portfolio.html"
+  status = 200
+
+# 404 fallback
 [[redirects]]
   from = "/*"
   to = "/404.html"
