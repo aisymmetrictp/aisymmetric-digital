@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/precision-plumbing/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 
     :root {
@@ -88,6 +88,7 @@
       .section-inner { padding: 0 18px; }
       .stats-row, .stats-grid { flex-direction: column; gap: 20px; }
     }
+h1, h2, h3 { font-family: 'Sora', sans-serif; }
 
 /* --- KINETIC ARCHETYPE --- */
 .hero {
@@ -139,7 +140,7 @@
 .hero-cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(255,255,255,0.1); }
 .hero-cta svg { width: 18px; height: 18px; }
 
-/* Cards with gradient borders */
+/* Cards with thick gradient left border + bold number */
 .services { padding: 120px 0; background: #fafafa; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
@@ -147,19 +148,17 @@
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .service-card {
-  background: #fff; border-radius: var(--radius); padding: 40px 32px;
-  border: 1px solid #eee; position: relative; overflow: hidden;
+  background: #fff; border-radius: 0; padding: 40px 32px;
+  border: 1px solid #eee; border-left: 5px solid transparent;
+  border-image: linear-gradient(180deg, var(--accent), var(--accent2)) 1;
+  border-image-slice: 1; position: relative; overflow: hidden;
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-}
-.service-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
 }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 64px rgba(0,0,0,0.08);
 }
-.service-icon { font-size: 2rem; margin-bottom: 20px; }
+.service-card-num { font-size: 2.8rem; font-weight: 900; color: var(--dark); opacity: 0.12; margin-bottom: 12px; font-family: 'Sora', sans-serif; }
 .service-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
 .service-card p { font-size: 0.95rem; color: #555; line-height: 1.7; }
 
@@ -191,11 +190,18 @@
 .feature-item:hover { transform: translateX(6px); box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
 .feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - bordered with geometric accent corner */
 .testimonial { padding: 100px 0; background: #fff; }
 .testimonial-card {
   max-width: 720px; margin: 0 auto; text-align: center;
-  padding: 56px 48px; border: 2px solid #eee; border-radius: var(--radius);
+  padding: 56px 48px; border: 2px solid #eee; border-radius: 0;
+  position: relative; overflow: hidden;
+}
+.testimonial-card::before {
+  content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0.3;
 }
 .testimonial-card blockquote { font-size: 1.3rem; font-weight: 400; line-height: 1.7; margin-bottom: 28px; color: #333; font-style: italic; }
 .testimonial-card .author { font-weight: 700; font-size: 1rem; color: var(--dark); }
@@ -255,17 +261,17 @@
     <p class="section-subtitle reveal reveal-d2">Full-service plumbing company specializing in residential and commercial repair, repiping, water heater installation, and drain cleaning.</p>
     <div class="services-grid">
       <div class="service-card reveal reveal-d1">
-        <div class="service-icon">🔧</div>
+        <div class="service-card-num">01</div>
         <h3>Plumbing Repair</h3>
         <p>Leak detection, faucet and fixture repair, toilet replacement, and burst pipe emergency service available 24/7.</p>
       </div>
       <div class="service-card reveal reveal-d2">
-        <div class="service-icon">🔥</div>
+        <div class="service-card-num">02</div>
         <h3>Water Heater Services</h3>
         <p>Tank and tankless water heater installation, repair, and maintenance with same-day service available.</p>
       </div>
       <div class="service-card reveal reveal-d3">
-        <div class="service-icon">🚿</div>
+        <div class="service-card-num">03</div>
         <h3>Drain &amp; Sewer</h3>
         <p>Video camera inspections, hydro-jetting, trenchless sewer repair, and preventative drain maintenance programs.</p>
       </div>
@@ -337,7 +343,7 @@
     <div class="footer-inner">
       <p class="footer-brand">Precision Plumbing Co.</p>
       <p class="footer-copy">&copy; 2026 Precision Plumbing Co.. All rights reserved.</p>
-      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+      <p class="footer-credit">Designed &amp; built by <a href="https://aisymmetricdigital.com"><strong>AISymmetric Digital</strong></a> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
     </div>
   </footer>
 

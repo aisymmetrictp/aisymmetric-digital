@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/evergreen-landscaping/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 
     :root {
@@ -88,6 +88,7 @@
       .section-inner { padding: 0 18px; }
       .stats-row, .stats-grid { flex-direction: column; gap: 20px; }
     }
+h1, h2, h3 { font-family: 'JetBrains Mono', monospace; }
 
 /* --- PRECISION ARCHETYPE --- */
 .hero {
@@ -143,23 +144,24 @@
 .metric-value { font-size: 1.8rem; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
 .metric-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* Services */
+/* Services - strict 2-column with monospace numbering and thin lines */
 .services { padding: 120px 0; background: #fafafa; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-.section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 12px; }
+.section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; }
 .section-title { font-size: 2.4rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.02em; }
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 540px; margin-bottom: 56px; line-height: 1.7; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e0e0e0; }
-.service-card {
-  background: #fff; padding: 40px 32px;
+.services-grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid #d0d0d0; }
+.service-card-2col {
+  background: #fff; padding: 36px 32px;
+  border-bottom: 1px solid #d0d0d0; border-right: 1px solid #d0d0d0;
   transition: background 0.5s var(--ease);
 }
-.service-card:hover { background: var(--dark); }
-.service-card:hover h3, .service-card:hover p { color: #fff; }
-.service-card:hover .service-icon { opacity: 1; }
-.service-icon { font-size: 1.6rem; margin-bottom: 20px; opacity: 0.7; transition: opacity 0.5s var(--ease); }
-.service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); transition: color 0.5s var(--ease); }
-.service-card p { font-size: 0.93rem; color: #555; line-height: 1.7; transition: color 0.5s var(--ease); }
+.service-card-2col:nth-child(2n) { border-right: none; }
+.service-card-2col:hover { background: var(--dark); }
+.service-card-2col:hover h3, .service-card-2col:hover p, .service-card-2col:hover .service-mono-num { color: #fff; }
+.service-mono-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.05em; transition: color 0.5s var(--ease); }
+.service-card-2col h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--dark); transition: color 0.5s var(--ease); }
+.service-card-2col p { font-size: 0.93rem; color: #555; line-height: 1.7; transition: color 0.5s var(--ease); }
 
 /* About */
 .about { padding: 120px 0; background: #fff; }
@@ -175,26 +177,40 @@
 .stat-label { font-size: 0.85rem; color: #666; font-weight: 500; }
 .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--dark); font-variant-numeric: tabular-nums; }
 
-/* Features */
+/* Features - table-like rows with alternating backgrounds */
 .features { padding: 100px 0; background: #fafafa; }
-.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 800px; }
-.feature-item {
-  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
-  background: #fff; border: 1px solid #eee;
-  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+.features-table { display: flex; flex-direction: column; max-width: 800px; border: 1px solid #e0e0e0; }
+.feature-row {
+  display: flex; align-items: center; gap: 16px; padding: 18px 24px;
+  transition: background 0.3s var(--ease);
 }
-.feature-item:hover { border-color: var(--accent); transform: translateX(4px); }
-.feature-num { font-size: 0.7rem; font-weight: 800; color: var(--accent); width: 24px; text-align: center; }
-.feature-item span { font-size: 0.93rem; font-weight: 500; color: #333; }
+.feature-row:nth-child(odd) { background: #fff; }
+.feature-row:nth-child(even) { background: #f5f5f5; }
+.feature-row:hover { background: color-mix(in srgb, var(--accent) 6%, #fff); }
+.feature-row:not(:last-child) { border-bottom: 1px solid #e8e8e8; }
+.feature-row-num { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent); min-width: 28px; }
+.feature-row span { font-size: 0.93rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - monospace-styled with metrics sidebar */
 .testimonial { padding: 100px 0; background: #fff; }
-.testimonial-card {
-  max-width: 700px; margin: 0 auto; padding: 48px; border: 1px solid #eee;
+.testimonial-precision {
+  max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 200px; gap: 0;
+  border: 1px solid #e0e0e0;
 }
-.testimonial-card blockquote { font-size: 1.2rem; font-weight: 400; line-height: 1.7; margin-bottom: 24px; color: #333; font-style: italic; border-left: 3px solid var(--accent); padding-left: 20px; }
-.testimonial-card .author { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
-.testimonial-card .role { font-size: 0.82rem; color: #888; margin-top: 4px; }
+.testimonial-precision-main { padding: 48px 40px; }
+.testimonial-precision-main blockquote {
+  font-size: 1.15rem; font-weight: 400; line-height: 1.7; margin-bottom: 24px; color: #333;
+  font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;
+}
+.testimonial-precision-main .author { font-weight: 700; font-size: 0.9rem; color: var(--dark); font-family: 'JetBrains Mono', monospace; }
+.testimonial-precision-main .role { font-size: 0.8rem; color: #888; margin-top: 4px; }
+.testimonial-metrics { background: var(--dark); padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.testimonial-metric-val { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.testimonial-metric-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+@media (max-width: 768px) {
+  .testimonial-precision { grid-template-columns: 1fr; }
+  .testimonial-metrics { flex-direction: row; flex-wrap: wrap; gap: 16px; }
+}
 
 /* CTA */
 .cta-section {
@@ -251,24 +267,49 @@
   </div>
 </section>
 
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-label reveal">Differentiators</div>
+    <h2 class="section-title reveal reveal-d1">Our Standards</h2>
+    <div class="features-table">
+      <div class="feature-row reveal reveal-d1">
+        <span class="feature-row-num">[01]</span>
+        <span>3D landscape renderings before installation begins</span>
+      </div>
+      <div class="feature-row reveal reveal-d2">
+        <span class="feature-row-num">[02]</span>
+        <span>Drought-tolerant and native plant expertise</span>
+      </div>
+      <div class="feature-row reveal reveal-d3">
+        <span class="feature-row-num">[03]</span>
+        <span>Smart irrigation system design and installation</span>
+      </div>
+      <div class="feature-row reveal reveal-d4">
+        <span class="feature-row-num">[04]</span>
+        <span>One-year plant replacement warranty</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="services" id="services">
   <div class="section-inner">
     <div class="section-label reveal">Services</div>
     <h2 class="section-title reveal reveal-d1">Our Expertise</h2>
     <p class="section-subtitle reveal reveal-d2">Residential and commercial landscaping company providing design, hardscaping, irrigation, and ongoing property maintenance.</p>
-    <div class="services-grid">
-      <div class="service-card reveal reveal-d1">
-        <div class="service-icon">🌿</div>
+    <div class="services-grid-2col">
+      <div class="service-card-2col reveal reveal-d1">
+        <div class="service-mono-num">// 01</div>
         <h3>Landscape Design &amp; Installation</h3>
         <p>Custom planting plans, garden beds, trees, shrubs, and perennial gardens designed for year-round beauty and low maintenance.</p>
       </div>
-      <div class="service-card reveal reveal-d2">
-        <div class="service-icon">🧱</div>
+      <div class="service-card-2col reveal reveal-d2">
+        <div class="service-mono-num">// 02</div>
         <h3>Hardscaping</h3>
         <p>Patios, retaining walls, walkways, fire pits, and outdoor kitchens built with natural stone, pavers, and premium materials.</p>
       </div>
-      <div class="service-card reveal reveal-d3">
-        <div class="service-icon">🌱</div>
+      <div class="service-card-2col reveal reveal-d3">
+        <div class="service-mono-num">// 03</div>
         <h3>Maintenance Programs</h3>
         <p>Weekly mowing, seasonal cleanups, pruning, fertilization, and irrigation management to keep your property pristine.</p>
       </div>
@@ -293,37 +334,19 @@
   </div>
 </section>
 
-<section class="features" id="features">
-  <div class="section-inner">
-    <div class="section-label reveal">Differentiators</div>
-    <h2 class="section-title reveal reveal-d1">Our Standards</h2>
-    <div class="features-list">
-      <div class="feature-item reveal reveal-d1">
-        <span class="feature-num">01</span>
-        <span>3D landscape renderings before installation begins</span>
-      </div>
-      <div class="feature-item reveal reveal-d2">
-        <span class="feature-num">02</span>
-        <span>Drought-tolerant and native plant expertise</span>
-      </div>
-      <div class="feature-item reveal reveal-d3">
-        <span class="feature-num">03</span>
-        <span>Smart irrigation system design and installation</span>
-      </div>
-      <div class="feature-item reveal reveal-d4">
-        <span class="feature-num">04</span>
-        <span>One-year plant replacement warranty</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="testimonial" id="testimonial">
   <div class="section-inner">
-    <div class="testimonial-card reveal">
-      <blockquote>&ldquo;Evergreen transformed our barren backyard into an oasis. The patio, plantings, and lighting they installed completely changed how we use our outdoor space. We practically live outside now.&rdquo;</blockquote>
-      <div class="author">Brian &amp; Julie Hoffman</div>
-      <div class="role">Homeowners</div>
+    <div class="testimonial-precision reveal">
+      <div class="testimonial-precision-main">
+        <blockquote>&ldquo;Evergreen transformed our barren backyard into an oasis. The patio, plantings, and lighting they installed completely changed how we use our outdoor space. We practically live outside now.&rdquo;</blockquote>
+        <div class="author">Brian &amp; Julie Hoffman</div>
+        <div class="role">Homeowners</div>
+      </div>
+      <div class="testimonial-metrics">
+        <div><div class="testimonial-metric-val">1,200+</div><div class="testimonial-metric-label">Projects Completed</div></div>
+        <div><div class="testimonial-metric-val">16</div><div class="testimonial-metric-label">Years in Business</div></div>
+        <div><div class="testimonial-metric-val">350+</div><div class="testimonial-metric-label">Maintenance Clients</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -344,7 +367,7 @@
     <div class="footer-inner">
       <p class="footer-brand">Evergreen Landscaping</p>
       <p class="footer-copy">&copy; 2026 Evergreen Landscaping. All rights reserved.</p>
-      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+      <p class="footer-credit">Designed &amp; built by <a href="https://aisymmetricdigital.com"><strong>AISymmetric Digital</strong></a> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
     </div>
   </footer>
 

@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/golden-harvest/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 
     :root {
@@ -25,7 +25,7 @@
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -88,6 +88,7 @@
       .section-inner { padding: 0 18px; }
       .stats-row, .stats-grid { flex-direction: column; gap: 20px; }
     }
+h1, h2, h3 { font-family: 'DM Sans', sans-serif; }
 
 /* --- ORGANIC ARCHETYPE --- */
 .hero {
@@ -139,7 +140,7 @@
 .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
 .hero-cta svg { width: 18px; height: 18px; }
 
-/* Rounded cards */
+/* Rounded cards with background gradient per card */
 .services { padding: 100px 0; background: #fff; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
@@ -147,18 +148,19 @@
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .service-card {
-  background: #fff; border-radius: 20px; padding: 40px 32px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease);
+  border-radius: 24px; padding: 40px 32px; border: none; position: relative; overflow: hidden;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
+.service-card:nth-child(1) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 10%, #fff), color-mix(in srgb, var(--accent) 4%, #fff)); }
+.service-card:nth-child(2) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent2) 10%, #fff), color-mix(in srgb, var(--accent2) 4%, #fff)); }
+.service-card:nth-child(3) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 8%, #fff), color-mix(in srgb, var(--accent2) 6%, #fff)); }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  border-color: var(--accent);
 }
 .service-icon {
   width: 56px; height: 56px; border-radius: 16px;
-  background: color-mix(in srgb, var(--accent) 12%, #fff);
+  background: rgba(255,255,255,0.8);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.6rem; margin-bottom: 20px;
 }
@@ -178,26 +180,28 @@
 .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
 .stat-label { font-size: 0.82rem; color: #888; margin-top: 4px; }
 
-/* Features */
+/* Features - rounded badges with leaf-themed check */
 .features { padding: 100px 0; background: #fff; }
-.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 800px; }
-.feature-item {
-  display: flex; align-items: center; gap: 14px; padding: 20px 24px;
-  background: color-mix(in srgb, var(--accent) 5%, #fff);
-  border-radius: 12px;
-  transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+.features-list { display: flex; flex-wrap: wrap; gap: 14px; max-width: 800px; }
+.feature-badge {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px;
+  background: color-mix(in srgb, var(--accent) 6%, #fff);
+  border-radius: 100px; border: 1px solid color-mix(in srgb, var(--accent) 15%, #fff);
+  transition: transform 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.feature-item:hover { transform: translateX(4px); background: color-mix(in srgb, var(--accent) 10%, #fff); }
-.feature-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-.feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
+.feature-badge:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--accent) 12%, #fff); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+.feature-badge-icon { color: var(--accent); flex-shrink: 0; display: flex; align-items: center; }
+.feature-badge-icon svg { width: 18px; height: 18px; }
+.feature-badge span { font-size: 0.9rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - soft rounded with decorative quote mark */
 .testimonial { padding: 100px 0; background: color-mix(in srgb, var(--accent) 4%, #fff); }
 .testimonial-card {
   max-width: 680px; margin: 0 auto; text-align: center;
-  background: #fff; border-radius: 24px; padding: 56px 48px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  background: #fff; border-radius: 32px; padding: 56px 48px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.06); position: relative;
 }
+.testimonial-quote-mark { font-size: 6rem; line-height: 1; color: var(--accent); opacity: 0.15; font-family: Georgia, serif; margin-bottom: -20px; }
 .testimonial-card blockquote { font-size: 1.25rem; font-weight: 400; line-height: 1.7; margin-bottom: 28px; color: #333; font-style: italic; }
 .testimonial-card .author { font-weight: 700; font-size: 1rem; color: var(--dark); }
 .testimonial-card .role { font-size: 0.85rem; color: #888; margin-top: 4px; }
@@ -253,6 +257,36 @@
   </div>
 </section>
 
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About Us</div>
+        <h2>Four Generations on This Land</h2>
+        <p>Golden Harvest has been farmed by the Brennan family since 1928. In 2010, third-generation farmer Katie Brennan transitioned the operation to certified organic practices. Today we cultivate 120 acres of vegetables, herbs, and small fruits.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="stats-row">
+          <div class="stat-item"><div class="stat-value" data-value="96">96</div><div class="stat-label">Years Farming</div></div>
+          <div class="stat-item"><div class="stat-value" data-value="120">120</div><div class="stat-label">Acres Cultivated</div></div>
+          <div class="stat-item"><div class="stat-value" data-value="300+">300+</div><div class="stat-label">CSA Members</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" id="testimonial">
+  <div class="section-inner">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <blockquote>&ldquo;Our CSA box from Golden Harvest has transformed how our family eats. The produce is incredibly fresh, the variety keeps us adventurous, and we love knowing exactly where our food comes from.&rdquo;</blockquote>
+      <div class="author">Sarah Lindquist</div>
+      <div class="role">CSA Member, 3rd Season</div>
+    </div>
+  </div>
+</section>
+
 <section class="services" id="services">
   <div class="section-inner">
     <div class="section-label reveal">Our Services</div>
@@ -278,56 +312,27 @@
   </div>
 </section>
 
-<section class="about" id="about">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <div class="section-label">About Us</div>
-        <h2>Four Generations on This Land</h2>
-        <p>Golden Harvest has been farmed by the Brennan family since 1928. In 2010, third-generation farmer Katie Brennan transitioned the operation to certified organic practices. Today we cultivate 120 acres of vegetables, herbs, and small fruits.</p>
-      </div>
-      <div class="reveal reveal-d2">
-        <div class="stats-row">
-          <div class="stat-item"><div class="stat-value" data-value="96">96</div><div class="stat-label">Years Farming</div></div>
-          <div class="stat-item"><div class="stat-value" data-value="120">120</div><div class="stat-label">Acres Cultivated</div></div>
-          <div class="stat-item"><div class="stat-value" data-value="300+">300+</div><div class="stat-label">CSA Members</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="features" id="features">
   <div class="section-inner">
     <div class="section-label reveal">Why Us</div>
     <h2 class="section-title reveal reveal-d1">What Makes Us Different</h2>
     <div class="features-list">
-      <div class="feature-item reveal reveal-d1">
-        <div class="feature-dot"></div>
+      <div class="feature-badge reveal reveal-d1">
+        <div class="feature-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg></div>
         <span>USDA Certified Organic since 2012</span>
       </div>
-      <div class="feature-item reveal reveal-d2">
-        <div class="feature-dot"></div>
+      <div class="feature-badge reveal reveal-d2">
+        <div class="feature-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg></div>
         <span>No-spray, regenerative soil practices</span>
       </div>
-      <div class="feature-item reveal reveal-d3">
-        <div class="feature-dot"></div>
+      <div class="feature-badge reveal reveal-d3">
+        <div class="feature-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg></div>
         <span>Farm stand open daily from May through October</span>
       </div>
-      <div class="feature-item reveal reveal-d4">
-        <div class="feature-dot"></div>
+      <div class="feature-badge reveal reveal-d4">
+        <div class="feature-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg></div>
         <span>U-pick strawberries, blueberries, and pumpkins</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="testimonial" id="testimonial">
-  <div class="section-inner">
-    <div class="testimonial-card reveal">
-      <blockquote>&ldquo;Our CSA box from Golden Harvest has transformed how our family eats. The produce is incredibly fresh, the variety keeps us adventurous, and we love knowing exactly where our food comes from.&rdquo;</blockquote>
-      <div class="author">Sarah Lindquist</div>
-      <div class="role">CSA Member, 3rd Season</div>
     </div>
   </div>
 </section>
@@ -348,7 +353,7 @@
     <div class="footer-inner">
       <p class="footer-brand">Golden Harvest Farms</p>
       <p class="footer-copy">&copy; 2026 Golden Harvest Farms. All rights reserved.</p>
-      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+      <p class="footer-credit">Designed &amp; built by <a href="https://aisymmetricdigital.com"><strong>AISymmetric Digital</strong></a> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
     </div>
   </footer>
 

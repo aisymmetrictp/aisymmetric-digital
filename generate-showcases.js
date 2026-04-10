@@ -53,7 +53,7 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
 
-function sharedMeta(data, slug) {
+function sharedMeta(data, slug, fontUrl) {
   return `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +65,7 @@ function sharedMeta(data, slug) {
     <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/${slug}/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">`;
+    <link href="${fontUrl}" rel="stylesheet">`;
 }
 
 function sharedJs() {
@@ -174,7 +174,7 @@ function footer(data) {
     <div class="footer-inner">
       <p class="footer-brand">${escapeHtml(data.name)}</p>
       <p class="footer-copy">&copy; ${new Date().getFullYear()} ${escapeHtml(data.name)}. All rights reserved.</p>
-      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+      <p class="footer-credit">Designed &amp; built by <a href="https://aisymmetricdigital.com"><strong>AISymmetric Digital</strong></a> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
     </div>
   </footer>`;
 }
@@ -182,7 +182,7 @@ function footer(data) {
 // ---------------------------------------------------------------------------
 // Shared base CSS (reset, navbar, footer, reveal, responsive)
 // ---------------------------------------------------------------------------
-function sharedCss(data) {
+function sharedCss(data, bodyFont) {
   return `
     :root {
       --accent: ${data.accentPrimary};
@@ -194,7 +194,7 @@ function sharedCss(data) {
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
+    body { font-family: '${bodyFont}', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -268,12 +268,14 @@ function sharedCss(data) {
 // ========================================
 function luminousTemplate(data, slug) {
   const s = data.sections;
+  const fontUrl = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${sharedMeta(data, slug)}
+${sharedMeta(data, slug, fontUrl)}
 <style>
-${sharedCss(data)}
+${sharedCss(data, 'Inter')}
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
 
 /* --- LUMINOUS ARCHETYPE --- */
 .hero {
@@ -315,7 +317,7 @@ ${sharedCss(data)}
 .hero-stat-val { font-size: 2rem; font-weight: 800; color: #fff; }
 .hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-top: 4px; }
 
-/* Glass cards */
+/* Glass cards with numbered indicators */
 .services { padding: 120px 0; background: #fafafa; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
@@ -332,7 +334,7 @@ ${sharedCss(data)}
   box-shadow: 0 20px 60px rgba(0,0,0,0.08);
   border-color: var(--accent);
 }
-.service-icon { font-size: 2rem; margin-bottom: 20px; }
+.service-num { font-size: 2.4rem; font-weight: 800; color: var(--accent); opacity: 0.35; margin-bottom: 16px; font-family: 'Space Grotesk', sans-serif; }
 .service-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
 .service-card p { font-size: 0.95rem; color: #555; line-height: 1.7; }
 
@@ -349,20 +351,20 @@ ${sharedCss(data)}
 .stat-value { font-size: 2.2rem; font-weight: 800; color: #fff; }
 .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
 
-/* Features */
+/* Features - icon pills */
 .features { padding: 100px 0; background: #fafafa; }
-.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; }
-.feature-item {
-  display: flex; align-items: center; gap: 14px; padding: 20px 24px;
-  background: #fff; border-radius: var(--radius-sm); border: 1px solid #eee;
-  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+.features-list { display: flex; flex-wrap: wrap; gap: 14px; max-width: 800px; }
+.feature-pill {
+  display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px;
+  background: #fff; border-radius: 100px; border: 1px solid #e0e0e0;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.feature-item:hover { border-color: var(--accent); transform: translateX(4px); }
-.feature-check { width: 24px; height: 24px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.feature-check svg { width: 14px; height: 14px; color: #fff; }
-.feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
+.feature-pill:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+.feature-pill-check { width: 20px; height: 20px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.feature-pill-check svg { width: 12px; height: 12px; color: #fff; }
+.feature-pill span { font-size: 0.9rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - dark gradient card */
 .testimonial { padding: 100px 0; background: #fff; }
 .testimonial-card {
   max-width: 720px; margin: 0 auto; text-align: center;
@@ -410,15 +412,25 @@ ${navbar(data)}
 
 <section class="services" id="services">
   <div class="section-inner">
-    <div class="section-label reveal">What We Do</div>
+    <div class="section-label reveal">Capabilities</div>
     <h2 class="section-title reveal reveal-d1">Our Services</h2>
     <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
     <div class="services-grid">
       ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
-        <div class="service-icon">${svc.icon}</div>
+        <div class="service-num">0${i + 1}</div>
         <h3>${escapeHtml(svc.title)}</h3>
         <p>${escapeHtml(svc.description)}</p>
       </div>`).join('\n      ')}
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" id="testimonial">
+  <div class="section-inner">
+    <div class="testimonial-card reveal">
+      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
+      <div class="author">${escapeHtml(s.testimonial.author)}</div>
+      <div class="role">${escapeHtml(s.testimonial.role)}</div>
     </div>
   </div>
 </section>
@@ -443,20 +455,10 @@ ${navbar(data)}
     <div class="section-label reveal">Why Choose Us</div>
     <h2 class="section-title reveal reveal-d1">What Sets Us Apart</h2>
     <div class="features-list">
-      ${s.features.map((f, i) => `<div class="feature-item reveal reveal-d${i + 1}">
-        <div class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      ${s.features.map((f, i) => `<div class="feature-pill reveal reveal-d${i + 1}">
+        <div class="feature-pill-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
         <span>${escapeHtml(f)}</span>
       </div>`).join('\n      ')}
-    </div>
-  </div>
-</section>
-
-<section class="testimonial" id="testimonial">
-  <div class="section-inner">
-    <div class="testimonial-card reveal">
-      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
-      <div class="author">${escapeHtml(s.testimonial.author)}</div>
-      <div class="role">${escapeHtml(s.testimonial.role)}</div>
     </div>
   </div>
 </section>
@@ -482,12 +484,14 @@ ${sharedJs()}
 // ========================================
 function editorialTemplate(data, slug) {
   const s = data.sections;
+  const fontUrl = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${sharedMeta(data, slug)}
+${sharedMeta(data, slug, fontUrl)}
 <style>
-${sharedCss(data)}
+${sharedCss(data, 'Source Sans 3')}
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 /* --- EDITORIAL ARCHETYPE --- */
 .hero {
@@ -538,21 +542,23 @@ ${sharedCss(data)}
 @keyframes editFloat2 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(12px,-8px) rotate(-3deg); } }
 @keyframes editFloat3 { 0% { transform: translate(0,0); } 100% { transform: translate(-8px,10px); } }
 
-/* Services */
+/* Services - stacked list layout */
 .services { padding: 120px 0; background: #fff; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent2); margin-bottom: 12px; }
 .section-title { font-size: 2.6rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.025em; }
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 540px; margin-bottom: 56px; line-height: 1.7; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.service-card {
-  padding: 40px 0; border-top: 2px solid #eee;
-  transition: border-color 0.5s var(--ease);
+.services-stack { display: flex; flex-direction: column; gap: 0; max-width: 900px; }
+.service-row {
+  display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 40px 0;
+  border-top: 1px solid #e0e0e0;
+  transition: background 0.4s var(--ease);
 }
-.service-card:hover { border-color: var(--accent2); }
-.service-icon { font-size: 1.8rem; margin-bottom: 20px; }
-.service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
-.service-card p { font-size: 0.95rem; color: #666; line-height: 1.7; }
+.service-row:last-child { border-bottom: 1px solid #e0e0e0; }
+.service-row:hover { background: #faf9f7; }
+.service-row-num { font-size: 2rem; font-weight: 300; color: var(--accent2); font-family: 'Playfair Display', serif; padding-top: 4px; }
+.service-row-content h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+.service-row-content p { font-size: 0.95rem; color: #666; line-height: 1.7; }
 
 /* About */
 .about { padding: 120px 0; background: #f8f7f5; }
@@ -576,13 +582,15 @@ ${sharedCss(data)}
 .feature-check { color: var(--accent2); font-weight: 700; font-size: 1.1rem; }
 .feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - large italic with horizontal rules */
 .testimonial { padding: 100px 0; background: #f8f7f5; }
 .testimonial-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.testimonial-rule { width: 80px; height: 1px; background: var(--accent2); margin: 0 auto 32px; }
 .testimonial-inner blockquote {
-  font-size: 1.5rem; font-weight: 400; line-height: 1.6; margin-bottom: 28px;
-  color: var(--dark); font-style: italic;
+  font-size: 1.7rem; font-weight: 400; line-height: 1.55; margin-bottom: 32px;
+  color: var(--dark); font-style: italic; font-family: 'Playfair Display', serif;
 }
+.testimonial-rule-bottom { width: 80px; height: 1px; background: var(--accent2); margin: 0 auto 28px; }
 .testimonial-inner .author { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
 .testimonial-inner .role { font-size: 0.85rem; color: #888; margin-top: 4px; }
 
@@ -620,21 +628,6 @@ ${navbar(data)}
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="section-inner">
-    <div class="section-label reveal">Services</div>
-    <h2 class="section-title reveal reveal-d1">What We Offer</h2>
-    <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
-    <div class="services-grid">
-      ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
-        <div class="service-icon">${svc.icon}</div>
-        <h3>${escapeHtml(svc.title)}</h3>
-        <p>${escapeHtml(svc.description)}</p>
-      </div>`).join('\n      ')}
-    </div>
-  </div>
-</section>
-
 <section class="about" id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -648,6 +641,23 @@ ${navbar(data)}
           ${s.about.stats.map(st => `<div class="stat-item"><div class="stat-value" data-value="${escapeHtml(st.value)}">${escapeHtml(st.value)}</div><div class="stat-label">${escapeHtml(st.label)}</div></div>`).join('\n          ')}
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal reveal-d1">What We Offer</h2>
+    <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
+    <div class="services-stack">
+      ${s.services.map((svc, i) => `<div class="service-row reveal reveal-d${i + 1}">
+        <div class="service-row-num">0${i + 1}</div>
+        <div class="service-row-content">
+          <h3>${escapeHtml(svc.title)}</h3>
+          <p>${escapeHtml(svc.description)}</p>
+        </div>
+      </div>`).join('\n      ')}
     </div>
   </div>
 </section>
@@ -668,7 +678,9 @@ ${navbar(data)}
 <section class="testimonial" id="testimonial">
   <div class="section-inner">
     <div class="testimonial-inner reveal">
+      <div class="testimonial-rule"></div>
       <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
+      <div class="testimonial-rule-bottom"></div>
       <div class="author">${escapeHtml(s.testimonial.author)}</div>
       <div class="role">${escapeHtml(s.testimonial.role)}</div>
     </div>
@@ -696,12 +708,14 @@ ${sharedJs()}
 // ========================================
 function kineticTemplate(data, slug) {
   const s = data.sections;
+  const fontUrl = 'https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${sharedMeta(data, slug)}
+${sharedMeta(data, slug, fontUrl)}
 <style>
-${sharedCss(data)}
+${sharedCss(data, 'Inter')}
+h1, h2, h3 { font-family: 'Sora', sans-serif; }
 
 /* --- KINETIC ARCHETYPE --- */
 .hero {
@@ -753,7 +767,7 @@ ${sharedCss(data)}
 .hero-cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(255,255,255,0.1); }
 .hero-cta svg { width: 18px; height: 18px; }
 
-/* Cards with gradient borders */
+/* Cards with thick gradient left border + bold number */
 .services { padding: 120px 0; background: #fafafa; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
@@ -761,19 +775,17 @@ ${sharedCss(data)}
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .service-card {
-  background: #fff; border-radius: var(--radius); padding: 40px 32px;
-  border: 1px solid #eee; position: relative; overflow: hidden;
+  background: #fff; border-radius: 0; padding: 40px 32px;
+  border: 1px solid #eee; border-left: 5px solid transparent;
+  border-image: linear-gradient(180deg, var(--accent), var(--accent2)) 1;
+  border-image-slice: 1; position: relative; overflow: hidden;
   transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-}
-.service-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
 }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 64px rgba(0,0,0,0.08);
 }
-.service-icon { font-size: 2rem; margin-bottom: 20px; }
+.service-card-num { font-size: 2.8rem; font-weight: 900; color: var(--dark); opacity: 0.12; margin-bottom: 12px; font-family: 'Sora', sans-serif; }
 .service-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
 .service-card p { font-size: 0.95rem; color: #555; line-height: 1.7; }
 
@@ -805,11 +817,18 @@ ${sharedCss(data)}
 .feature-item:hover { transform: translateX(6px); box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
 .feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - bordered with geometric accent corner */
 .testimonial { padding: 100px 0; background: #fff; }
 .testimonial-card {
   max-width: 720px; margin: 0 auto; text-align: center;
-  padding: 56px 48px; border: 2px solid #eee; border-radius: var(--radius);
+  padding: 56px 48px; border: 2px solid #eee; border-radius: 0;
+  position: relative; overflow: hidden;
+}
+.testimonial-card::before {
+  content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0.3;
 }
 .testimonial-card blockquote { font-size: 1.3rem; font-weight: 400; line-height: 1.7; margin-bottom: 28px; color: #333; font-style: italic; }
 .testimonial-card .author { font-weight: 700; font-size: 1rem; color: var(--dark); }
@@ -856,7 +875,7 @@ ${navbar(data)}
     <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
     <div class="services-grid">
       ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
-        <div class="service-icon">${svc.icon}</div>
+        <div class="service-card-num">0${i + 1}</div>
         <h3>${escapeHtml(svc.title)}</h3>
         <p>${escapeHtml(svc.description)}</p>
       </div>`).join('\n      ')}
@@ -923,12 +942,14 @@ ${sharedJs()}
 // ========================================
 function organicTemplate(data, slug) {
   const s = data.sections;
+  const fontUrl = 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${sharedMeta(data, slug)}
+${sharedMeta(data, slug, fontUrl)}
 <style>
-${sharedCss(data)}
+${sharedCss(data, 'DM Sans')}
+h1, h2, h3 { font-family: 'DM Sans', sans-serif; }
 
 /* --- ORGANIC ARCHETYPE --- */
 .hero {
@@ -980,7 +1001,7 @@ ${sharedCss(data)}
 .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
 .hero-cta svg { width: 18px; height: 18px; }
 
-/* Rounded cards */
+/* Rounded cards with background gradient per card */
 .services { padding: 100px 0; background: #fff; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
@@ -988,18 +1009,19 @@ ${sharedCss(data)}
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .service-card {
-  background: #fff; border-radius: 20px; padding: 40px 32px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease);
+  border-radius: 24px; padding: 40px 32px; border: none; position: relative; overflow: hidden;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
+.service-card:nth-child(1) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 10%, #fff), color-mix(in srgb, var(--accent) 4%, #fff)); }
+.service-card:nth-child(2) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent2) 10%, #fff), color-mix(in srgb, var(--accent2) 4%, #fff)); }
+.service-card:nth-child(3) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 8%, #fff), color-mix(in srgb, var(--accent2) 6%, #fff)); }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  border-color: var(--accent);
 }
 .service-icon {
   width: 56px; height: 56px; border-radius: 16px;
-  background: color-mix(in srgb, var(--accent) 12%, #fff);
+  background: rgba(255,255,255,0.8);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.6rem; margin-bottom: 20px;
 }
@@ -1019,26 +1041,28 @@ ${sharedCss(data)}
 .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); }
 .stat-label { font-size: 0.82rem; color: #888; margin-top: 4px; }
 
-/* Features */
+/* Features - rounded badges with leaf-themed check */
 .features { padding: 100px 0; background: #fff; }
-.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 800px; }
-.feature-item {
-  display: flex; align-items: center; gap: 14px; padding: 20px 24px;
-  background: color-mix(in srgb, var(--accent) 5%, #fff);
-  border-radius: 12px;
-  transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+.features-list { display: flex; flex-wrap: wrap; gap: 14px; max-width: 800px; }
+.feature-badge {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px;
+  background: color-mix(in srgb, var(--accent) 6%, #fff);
+  border-radius: 100px; border: 1px solid color-mix(in srgb, var(--accent) 15%, #fff);
+  transition: transform 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.feature-item:hover { transform: translateX(4px); background: color-mix(in srgb, var(--accent) 10%, #fff); }
-.feature-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-.feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
+.feature-badge:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--accent) 12%, #fff); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+.feature-badge-icon { color: var(--accent); flex-shrink: 0; display: flex; align-items: center; }
+.feature-badge-icon svg { width: 18px; height: 18px; }
+.feature-badge span { font-size: 0.9rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - soft rounded with decorative quote mark */
 .testimonial { padding: 100px 0; background: color-mix(in srgb, var(--accent) 4%, #fff); }
 .testimonial-card {
   max-width: 680px; margin: 0 auto; text-align: center;
-  background: #fff; border-radius: 24px; padding: 56px 48px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  background: #fff; border-radius: 32px; padding: 56px 48px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.06); position: relative;
 }
+.testimonial-quote-mark { font-size: 6rem; line-height: 1; color: var(--accent); opacity: 0.15; font-family: Georgia, serif; margin-bottom: -20px; }
 .testimonial-card blockquote { font-size: 1.25rem; font-weight: 400; line-height: 1.7; margin-bottom: 28px; color: #333; font-style: italic; }
 .testimonial-card .author { font-weight: 700; font-size: 1rem; color: var(--dark); }
 .testimonial-card .role { font-size: 0.85rem; color: #888; margin-top: 4px; }
@@ -1081,21 +1105,6 @@ ${navbar(data)}
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="section-inner">
-    <div class="section-label reveal">Our Services</div>
-    <h2 class="section-title reveal reveal-d1">How We Help</h2>
-    <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
-    <div class="services-grid">
-      ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
-        <div class="service-icon">${svc.icon}</div>
-        <h3>${escapeHtml(svc.title)}</h3>
-        <p>${escapeHtml(svc.description)}</p>
-      </div>`).join('\n      ')}
-    </div>
-  </div>
-</section>
-
 <section class="about" id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -1113,25 +1122,41 @@ ${navbar(data)}
   </div>
 </section>
 
-<section class="features" id="features">
+<section class="testimonial" id="testimonial">
   <div class="section-inner">
-    <div class="section-label reveal">Why Us</div>
-    <h2 class="section-title reveal reveal-d1">What Makes Us Different</h2>
-    <div class="features-list">
-      ${s.features.map((f, i) => `<div class="feature-item reveal reveal-d${i + 1}">
-        <div class="feature-dot"></div>
-        <span>${escapeHtml(f)}</span>
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
+      <div class="author">${escapeHtml(s.testimonial.author)}</div>
+      <div class="role">${escapeHtml(s.testimonial.role)}</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Our Services</div>
+    <h2 class="section-title reveal reveal-d1">How We Help</h2>
+    <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
+    <div class="services-grid">
+      ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
+        <div class="service-icon">${svc.icon}</div>
+        <h3>${escapeHtml(svc.title)}</h3>
+        <p>${escapeHtml(svc.description)}</p>
       </div>`).join('\n      ')}
     </div>
   </div>
 </section>
 
-<section class="testimonial" id="testimonial">
+<section class="features" id="features">
   <div class="section-inner">
-    <div class="testimonial-card reveal">
-      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
-      <div class="author">${escapeHtml(s.testimonial.author)}</div>
-      <div class="role">${escapeHtml(s.testimonial.role)}</div>
+    <div class="section-label reveal">Why Us</div>
+    <h2 class="section-title reveal reveal-d1">What Makes Us Different</h2>
+    <div class="features-list">
+      ${s.features.map((f, i) => `<div class="feature-badge reveal reveal-d${i + 1}">
+        <div class="feature-badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l3 3 5-5"/></svg></div>
+        <span>${escapeHtml(f)}</span>
+      </div>`).join('\n      ')}
     </div>
   </div>
 </section>
@@ -1158,12 +1183,14 @@ ${sharedJs()}
 // ========================================
 function precisionTemplate(data, slug) {
   const s = data.sections;
+  const fontUrl = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${sharedMeta(data, slug)}
+${sharedMeta(data, slug, fontUrl)}
 <style>
-${sharedCss(data)}
+${sharedCss(data, 'Inter')}
+h1, h2, h3 { font-family: 'JetBrains Mono', monospace; }
 
 /* --- PRECISION ARCHETYPE --- */
 .hero {
@@ -1219,23 +1246,24 @@ ${sharedCss(data)}
 .metric-value { font-size: 1.8rem; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
 .metric-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* Services */
+/* Services - strict 2-column with monospace numbering and thin lines */
 .services { padding: 120px 0; background: #fafafa; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-.section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 12px; }
+.section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; }
 .section-title { font-size: 2.4rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.02em; }
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 540px; margin-bottom: 56px; line-height: 1.7; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e0e0e0; }
-.service-card {
-  background: #fff; padding: 40px 32px;
+.services-grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid #d0d0d0; }
+.service-card-2col {
+  background: #fff; padding: 36px 32px;
+  border-bottom: 1px solid #d0d0d0; border-right: 1px solid #d0d0d0;
   transition: background 0.5s var(--ease);
 }
-.service-card:hover { background: var(--dark); }
-.service-card:hover h3, .service-card:hover p { color: #fff; }
-.service-card:hover .service-icon { opacity: 1; }
-.service-icon { font-size: 1.6rem; margin-bottom: 20px; opacity: 0.7; transition: opacity 0.5s var(--ease); }
-.service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); transition: color 0.5s var(--ease); }
-.service-card p { font-size: 0.93rem; color: #555; line-height: 1.7; transition: color 0.5s var(--ease); }
+.service-card-2col:nth-child(2n) { border-right: none; }
+.service-card-2col:hover { background: var(--dark); }
+.service-card-2col:hover h3, .service-card-2col:hover p, .service-card-2col:hover .service-mono-num { color: #fff; }
+.service-mono-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.05em; transition: color 0.5s var(--ease); }
+.service-card-2col h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--dark); transition: color 0.5s var(--ease); }
+.service-card-2col p { font-size: 0.93rem; color: #555; line-height: 1.7; transition: color 0.5s var(--ease); }
 
 /* About */
 .about { padding: 120px 0; background: #fff; }
@@ -1251,26 +1279,40 @@ ${sharedCss(data)}
 .stat-label { font-size: 0.85rem; color: #666; font-weight: 500; }
 .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--dark); font-variant-numeric: tabular-nums; }
 
-/* Features */
+/* Features - table-like rows with alternating backgrounds */
 .features { padding: 100px 0; background: #fafafa; }
-.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 800px; }
-.feature-item {
-  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
-  background: #fff; border: 1px solid #eee;
-  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+.features-table { display: flex; flex-direction: column; max-width: 800px; border: 1px solid #e0e0e0; }
+.feature-row {
+  display: flex; align-items: center; gap: 16px; padding: 18px 24px;
+  transition: background 0.3s var(--ease);
 }
-.feature-item:hover { border-color: var(--accent); transform: translateX(4px); }
-.feature-num { font-size: 0.7rem; font-weight: 800; color: var(--accent); width: 24px; text-align: center; }
-.feature-item span { font-size: 0.93rem; font-weight: 500; color: #333; }
+.feature-row:nth-child(odd) { background: #fff; }
+.feature-row:nth-child(even) { background: #f5f5f5; }
+.feature-row:hover { background: color-mix(in srgb, var(--accent) 6%, #fff); }
+.feature-row:not(:last-child) { border-bottom: 1px solid #e8e8e8; }
+.feature-row-num { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--accent); min-width: 28px; }
+.feature-row span { font-size: 0.93rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - monospace-styled with metrics sidebar */
 .testimonial { padding: 100px 0; background: #fff; }
-.testimonial-card {
-  max-width: 700px; margin: 0 auto; padding: 48px; border: 1px solid #eee;
+.testimonial-precision {
+  max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 200px; gap: 0;
+  border: 1px solid #e0e0e0;
 }
-.testimonial-card blockquote { font-size: 1.2rem; font-weight: 400; line-height: 1.7; margin-bottom: 24px; color: #333; font-style: italic; border-left: 3px solid var(--accent); padding-left: 20px; }
-.testimonial-card .author { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
-.testimonial-card .role { font-size: 0.82rem; color: #888; margin-top: 4px; }
+.testimonial-precision-main { padding: 48px 40px; }
+.testimonial-precision-main blockquote {
+  font-size: 1.15rem; font-weight: 400; line-height: 1.7; margin-bottom: 24px; color: #333;
+  font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;
+}
+.testimonial-precision-main .author { font-weight: 700; font-size: 0.9rem; color: var(--dark); font-family: 'JetBrains Mono', monospace; }
+.testimonial-precision-main .role { font-size: 0.8rem; color: #888; margin-top: 4px; }
+.testimonial-metrics { background: var(--dark); padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.testimonial-metric-val { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.testimonial-metric-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+@media (max-width: 768px) {
+  .testimonial-precision { grid-template-columns: 1fr; }
+  .testimonial-metrics { flex-direction: row; flex-wrap: wrap; gap: 16px; }
+}
 
 /* CTA */
 .cta-section {
@@ -1312,14 +1354,27 @@ ${navbar(data)}
   </div>
 </section>
 
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-label reveal">Differentiators</div>
+    <h2 class="section-title reveal reveal-d1">Our Standards</h2>
+    <div class="features-table">
+      ${s.features.map((f, i) => `<div class="feature-row reveal reveal-d${i + 1}">
+        <span class="feature-row-num">[0${i + 1}]</span>
+        <span>${escapeHtml(f)}</span>
+      </div>`).join('\n      ')}
+    </div>
+  </div>
+</section>
+
 <section class="services" id="services">
   <div class="section-inner">
     <div class="section-label reveal">Services</div>
     <h2 class="section-title reveal reveal-d1">Our Expertise</h2>
     <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
-    <div class="services-grid">
-      ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
-        <div class="service-icon">${svc.icon}</div>
+    <div class="services-grid-2col">
+      ${s.services.map((svc, i) => `<div class="service-card-2col reveal reveal-d${i + 1}">
+        <div class="service-mono-num">// 0${i + 1}</div>
         <h3>${escapeHtml(svc.title)}</h3>
         <p>${escapeHtml(svc.description)}</p>
       </div>`).join('\n      ')}
@@ -1342,25 +1397,17 @@ ${navbar(data)}
   </div>
 </section>
 
-<section class="features" id="features">
-  <div class="section-inner">
-    <div class="section-label reveal">Differentiators</div>
-    <h2 class="section-title reveal reveal-d1">Our Standards</h2>
-    <div class="features-list">
-      ${s.features.map((f, i) => `<div class="feature-item reveal reveal-d${i + 1}">
-        <span class="feature-num">0${i + 1}</span>
-        <span>${escapeHtml(f)}</span>
-      </div>`).join('\n      ')}
-    </div>
-  </div>
-</section>
-
 <section class="testimonial" id="testimonial">
   <div class="section-inner">
-    <div class="testimonial-card reveal">
-      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
-      <div class="author">${escapeHtml(s.testimonial.author)}</div>
-      <div class="role">${escapeHtml(s.testimonial.role)}</div>
+    <div class="testimonial-precision reveal">
+      <div class="testimonial-precision-main">
+        <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
+        <div class="author">${escapeHtml(s.testimonial.author)}</div>
+        <div class="role">${escapeHtml(s.testimonial.role)}</div>
+      </div>
+      <div class="testimonial-metrics">
+        ${s.about.stats.slice(0, 3).map(st => `<div><div class="testimonial-metric-val">${escapeHtml(st.value)}</div><div class="testimonial-metric-label">${escapeHtml(st.label)}</div></div>`).join('\n        ')}
+      </div>
     </div>
   </div>
 </section>
@@ -1387,12 +1434,14 @@ ${sharedJs()}
 // ========================================
 function artisanTemplate(data, slug) {
   const s = data.sections;
+  const fontUrl = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-${sharedMeta(data, slug)}
+${sharedMeta(data, slug, fontUrl)}
 <style>
-${sharedCss(data)}
+${sharedCss(data, 'DM Sans')}
+h1, h2, h3 { font-family: 'Fraunces', serif; }
 
 /* --- ARTISAN ARCHETYPE --- */
 .hero {
@@ -1431,7 +1480,7 @@ ${sharedCss(data)}
 }
 .hero-secondary:hover { color: #fff; }
 
-/* Services - overlapping cards */
+/* Services - overlapping cards with offset and handcraft borders */
 .services { padding: 120px 0; background: #fff; position: relative; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
@@ -1442,21 +1491,23 @@ ${sharedCss(data)}
   display: inline-block;
 }
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 56px; line-height: 1.7; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 20px; }
 .service-card {
-  background: #fff; border-radius: 20px; padding: 40px 32px;
+  background: #fff; border-radius: 4px; padding: 40px 32px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.05);
-  border: 1px solid #f0f0f0; position: relative;
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  border: 2px solid #e8e4e0; position: relative;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease);
 }
-.service-card:nth-child(2) { transform: translateY(-16px); }
+.service-card:nth-child(1) { transform: rotate(-1deg); }
+.service-card:nth-child(2) { transform: translateY(-20px) rotate(0.5deg); }
+.service-card:nth-child(3) { transform: rotate(-0.5deg); }
 .service-card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-12px) rotate(0deg);
   box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+  border-color: var(--accent);
 }
-.service-card:nth-child(2):hover { transform: translateY(-28px); }
-.service-icon {
-  width: 52px; height: 52px; border-radius: 14px;
+.service-card-icon {
+  width: 52px; height: 52px; border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem; margin-bottom: 20px;
@@ -1483,34 +1534,34 @@ ${sharedCss(data)}
 .stat-value { font-size: 2rem; font-weight: 800; }
 .stat-label { font-size: 0.82rem; opacity: 0.8; margin-top: 4px; }
 
-/* Features */
+/* Features - hand-drawn underline with decorative bullet */
 .features { padding: 100px 0; background: #fff; }
-.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 800px; }
-.feature-item {
-  display: flex; align-items: center; gap: 14px; padding: 20px 24px;
-  border-radius: 12px; border: 1px solid #eee;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 800px; }
+.feature-artisan {
+  display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px;
+  border-bottom: 2px dashed #e0dbd5;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
 }
-.feature-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); border-color: var(--accent); }
-.feature-icon {
-  width: 32px; height: 32px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.feature-icon svg { width: 16px; height: 16px; color: #fff; }
-.feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
+.feature-artisan:hover { transform: translateX(4px); border-color: var(--accent); }
+.feature-artisan-bullet { font-size: 1.2rem; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+.feature-artisan span { font-size: 0.95rem; font-weight: 500; color: #333; line-height: 1.5; }
 
-/* Testimonial */
+/* Testimonial - warm background with artistic quotes and serif font */
 .testimonial { padding: 100px 0; background: #f9f8f6; }
-.testimonial-card {
+.testimonial-artisan {
   max-width: 700px; margin: 0 auto; text-align: center;
   padding: 56px 48px;
-  background: linear-gradient(135deg, var(--dark) 0%, color-mix(in srgb, var(--dark) 80%, var(--accent)) 100%);
-  border-radius: 24px; color: #fff;
+  background: color-mix(in srgb, var(--accent) 8%, #faf6f1);
+  border-radius: 8px; border: 1px solid color-mix(in srgb, var(--accent) 15%, #e8e0d8);
+  position: relative;
 }
-.testimonial-card blockquote { font-size: 1.3rem; font-weight: 400; line-height: 1.7; margin-bottom: 28px; font-style: italic; color: rgba(255,255,255,0.9); }
-.testimonial-card .author { font-weight: 700; font-size: 1rem; }
-.testimonial-card .role { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+.testimonial-artisan-quote { font-size: 5rem; line-height: 1; color: var(--accent); opacity: 0.25; font-family: 'Fraunces', serif; margin-bottom: -16px; }
+.testimonial-artisan blockquote {
+  font-size: 1.3rem; font-weight: 400; line-height: 1.7; margin-bottom: 28px;
+  font-style: italic; color: var(--dark); font-family: 'Fraunces', serif;
+}
+.testimonial-artisan .author { font-weight: 700; font-size: 1rem; color: var(--dark); }
+.testimonial-artisan .role { font-size: 0.85rem; color: #888; margin-top: 4px; }
 
 /* CTA */
 .cta-section {
@@ -1555,7 +1606,7 @@ ${navbar(data)}
     <p class="section-subtitle reveal reveal-d2">${escapeHtml(data.description)}</p>
     <div class="services-grid">
       ${s.services.map((svc, i) => `<div class="service-card reveal reveal-d${i + 1}">
-        <div class="service-icon">${svc.icon}</div>
+        <div class="service-card-icon">${svc.icon}</div>
         <h3>${escapeHtml(svc.title)}</h3>
         <p>${escapeHtml(svc.description)}</p>
       </div>`).join('\n      ')}
@@ -1580,25 +1631,26 @@ ${navbar(data)}
   </div>
 </section>
 
+<section class="testimonial" id="testimonial">
+  <div class="section-inner">
+    <div class="testimonial-artisan reveal">
+      <div class="testimonial-artisan-quote">&ldquo;</div>
+      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
+      <div class="author">${escapeHtml(s.testimonial.author)}</div>
+      <div class="role">${escapeHtml(s.testimonial.role)}</div>
+    </div>
+  </div>
+</section>
+
 <section class="features" id="features">
   <div class="section-inner">
     <div class="section-label reveal">Why Us</div>
     <h2 class="section-title reveal reveal-d1">Our Approach</h2>
     <div class="features-list">
-      ${s.features.map((f, i) => `<div class="feature-item reveal reveal-d${i + 1}">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      ${s.features.map((f, i) => `<div class="feature-artisan reveal reveal-d${i + 1}">
+        <span class="feature-artisan-bullet">&#10043;</span>
         <span>${escapeHtml(f)}</span>
       </div>`).join('\n      ')}
-    </div>
-  </div>
-</section>
-
-<section class="testimonial" id="testimonial">
-  <div class="section-inner">
-    <div class="testimonial-card reveal">
-      <blockquote>&ldquo;${escapeHtml(s.testimonial.quote)}&rdquo;</blockquote>
-      <div class="author">${escapeHtml(s.testimonial.author)}</div>
-      <div class="role">${escapeHtml(s.testimonial.role)}</div>
     </div>
   </div>
 </section>

@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/meridian-group/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 
     :root {
@@ -25,7 +25,7 @@
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
+    body { font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
@@ -88,6 +88,7 @@
       .section-inner { padding: 0 18px; }
       .stats-row, .stats-grid { flex-direction: column; gap: 20px; }
     }
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 /* --- EDITORIAL ARCHETYPE --- */
 .hero {
@@ -138,21 +139,23 @@
 @keyframes editFloat2 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(12px,-8px) rotate(-3deg); } }
 @keyframes editFloat3 { 0% { transform: translate(0,0); } 100% { transform: translate(-8px,10px); } }
 
-/* Services */
+/* Services - stacked list layout */
 .services { padding: 120px 0; background: #fff; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent2); margin-bottom: 12px; }
 .section-title { font-size: 2.6rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.025em; }
 .section-subtitle { font-size: 1.05rem; color: #666; max-width: 540px; margin-bottom: 56px; line-height: 1.7; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.service-card {
-  padding: 40px 0; border-top: 2px solid #eee;
-  transition: border-color 0.5s var(--ease);
+.services-stack { display: flex; flex-direction: column; gap: 0; max-width: 900px; }
+.service-row {
+  display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 40px 0;
+  border-top: 1px solid #e0e0e0;
+  transition: background 0.4s var(--ease);
 }
-.service-card:hover { border-color: var(--accent2); }
-.service-icon { font-size: 1.8rem; margin-bottom: 20px; }
-.service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
-.service-card p { font-size: 0.95rem; color: #666; line-height: 1.7; }
+.service-row:last-child { border-bottom: 1px solid #e0e0e0; }
+.service-row:hover { background: #faf9f7; }
+.service-row-num { font-size: 2rem; font-weight: 300; color: var(--accent2); font-family: 'Playfair Display', serif; padding-top: 4px; }
+.service-row-content h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+.service-row-content p { font-size: 0.95rem; color: #666; line-height: 1.7; }
 
 /* About */
 .about { padding: 120px 0; background: #f8f7f5; }
@@ -176,13 +179,15 @@
 .feature-check { color: var(--accent2); font-weight: 700; font-size: 1.1rem; }
 .feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
 
-/* Testimonial */
+/* Testimonial - large italic with horizontal rules */
 .testimonial { padding: 100px 0; background: #f8f7f5; }
 .testimonial-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.testimonial-rule { width: 80px; height: 1px; background: var(--accent2); margin: 0 auto 32px; }
 .testimonial-inner blockquote {
-  font-size: 1.5rem; font-weight: 400; line-height: 1.6; margin-bottom: 28px;
-  color: var(--dark); font-style: italic;
+  font-size: 1.7rem; font-weight: 400; line-height: 1.55; margin-bottom: 32px;
+  color: var(--dark); font-style: italic; font-family: 'Playfair Display', serif;
 }
+.testimonial-rule-bottom { width: 80px; height: 1px; background: var(--accent2); margin: 0 auto 28px; }
 .testimonial-inner .author { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
 .testimonial-inner .role { font-size: 0.85rem; color: #888; margin-top: 4px; }
 
@@ -233,31 +238,6 @@
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="section-inner">
-    <div class="section-label reveal">Services</div>
-    <h2 class="section-title reveal reveal-d1">What We Offer</h2>
-    <p class="section-subtitle reveal reveal-d2">Full-service real estate brokerage handling luxury residential sales, commercial acquisitions, and investment portfolio management.</p>
-    <div class="services-grid">
-      <div class="service-card reveal reveal-d1">
-        <div class="service-icon">🏡</div>
-        <h3>Residential Sales</h3>
-        <p>Expert buyer and seller representation with in-depth market analysis, professional staging, and strategic pricing.</p>
-      </div>
-      <div class="service-card reveal reveal-d2">
-        <div class="service-icon">🏢</div>
-        <h3>Commercial Acquisitions</h3>
-        <p>Identifying and securing high-yield commercial properties including office, retail, and mixed-use developments.</p>
-      </div>
-      <div class="service-card reveal reveal-d3">
-        <div class="service-icon">📊</div>
-        <h3>Investment Advisory</h3>
-        <p>Portfolio strategy, 1031 exchanges, and property management referrals for passive income investors.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="about" id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -271,6 +251,37 @@
           <div class="stat-item"><div class="stat-value" data-value="$2.1B">$2.1B</div><div class="stat-label">Total Sales Volume</div></div>
           <div class="stat-item"><div class="stat-value" data-value="3,400+">3,400+</div><div class="stat-label">Properties Sold</div></div>
           <div class="stat-item"><div class="stat-value" data-value="98%">98%</div><div class="stat-label">Client Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal reveal-d1">What We Offer</h2>
+    <p class="section-subtitle reveal reveal-d2">Full-service real estate brokerage handling luxury residential sales, commercial acquisitions, and investment portfolio management.</p>
+    <div class="services-stack">
+      <div class="service-row reveal reveal-d1">
+        <div class="service-row-num">01</div>
+        <div class="service-row-content">
+          <h3>Residential Sales</h3>
+          <p>Expert buyer and seller representation with in-depth market analysis, professional staging, and strategic pricing.</p>
+        </div>
+      </div>
+      <div class="service-row reveal reveal-d2">
+        <div class="service-row-num">02</div>
+        <div class="service-row-content">
+          <h3>Commercial Acquisitions</h3>
+          <p>Identifying and securing high-yield commercial properties including office, retail, and mixed-use developments.</p>
+        </div>
+      </div>
+      <div class="service-row reveal reveal-d3">
+        <div class="service-row-num">03</div>
+        <div class="service-row-content">
+          <h3>Investment Advisory</h3>
+          <p>Portfolio strategy, 1031 exchanges, and property management referrals for passive income investors.</p>
         </div>
       </div>
     </div>
@@ -305,7 +316,9 @@
 <section class="testimonial" id="testimonial">
   <div class="section-inner">
     <div class="testimonial-inner reveal">
+      <div class="testimonial-rule"></div>
       <blockquote>&ldquo;Meridian Group found us a property that checked every box in a market where inventory was incredibly tight. Their negotiation skills saved us over forty thousand dollars.&rdquo;</blockquote>
+      <div class="testimonial-rule-bottom"></div>
       <div class="author">David &amp; Laura Chen</div>
       <div class="role">Homebuyers, Lakeview</div>
     </div>
@@ -327,7 +340,7 @@
     <div class="footer-inner">
       <p class="footer-brand">Meridian Group Realty</p>
       <p class="footer-copy">&copy; 2026 Meridian Group Realty. All rights reserved.</p>
-      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+      <p class="footer-credit">Designed &amp; built by <a href="https://aisymmetricdigital.com"><strong>AISymmetric Digital</strong></a> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
     </div>
   </footer>
 
