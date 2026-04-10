@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISymmetric — Web Design & Development Portfolio | 24 Industry Showcases</title>
+    <meta name="description" content="Explore 24 custom-built websites across industries — from fintech to fitness, cybersecurity to coffee. See what AISymmetric builds for brands that demand results.">
+    <meta name="keywords" content="web design portfolio, custom website development, AI consulting, boutique web agency, industry showcase, AISymmetric">
+    <meta property="og:title" content="AISymmetric — Web Design & Development Portfolio">
+    <meta property="og:description" content="24 custom-built website concepts across industries. Bold design and smart engineering that speaks for itself.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webportfolio.aisymmetricsolutions.com">
+    <link rel="canonical" href="https://webportfolio.aisymmetricsolutions.com">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CVF4MDVKJS"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CVF4MDVKJS');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ========== FLOATING PARTICLES ========== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.3);
+            animation: float linear infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: rgba(6, 182, 212, 0.25);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) translateX(10px) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(-10px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* ========== LAYOUT ========== */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 14px 0;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #111;
+            display: flex;
+            align-items: center;
+        }
+
+        .aisym-logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #111;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            background: #111;
+            color: #fff;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #3b82f6;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            color: #111;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.0625rem, 2vw, 1.25rem);
+            font-weight: 400;
+            color: #6b7280;
+            line-height: 1.7;
+            max-width: 540px;
+            margin: 0 auto 48px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: #111;
+            color: #fff;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-primary svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(3px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: transparent;
+            color: #6b7280;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #111;
+            color: #111;
+        }
+
+        /* ========== STATS BAR ========== */
+        .stats {
+            position: relative;
+            z-index: 1;
+            padding: 60px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stats-inner {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #111;
+        }
+
+        .stat-number .accent {
+            color: #3b82f6;
+        }
+
+        .stat-label {
+            font-size: 0.8125rem;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        /* ========== PROJECTS SECTION ========== */
+        .projects {
+            position: relative;
+            z-index: 1;
+            padding: 120px 0;
+        }
+
+        .section-label {
+            display: block;
+            text-align: center;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #3b82f6;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #111;
+            margin-bottom: 16px;
+        }
+
+        .section-title .accent {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.0625rem;
+            color: #6b7280;
+            max-width: 560px;
+            margin: 0 auto 64px;
+        }
+
+        /* ========== PROJECT GRID ========== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        /* ========== PROJECT CARD ========== */
+        .project-card {
+            position: relative;
+            border-radius: 16px;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #e0e0e0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.03);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card-inner {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            min-height: 280px;
+        }
+
+        .project-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .project-industry {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 100px;
+            background: #fff;
+            border: 1px solid #eee;
+            white-space: nowrap;
+        }
+
+        .project-industry::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .project-number {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #d1d5db;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .project-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #111;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .project-description {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: auto;
+            padding-bottom: 32px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            transition: all 0.3s ease;
+        }
+
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .project-link svg {
+            transform: translateX(4px);
+        }
+
+        /* ========== CTA INTERSTITIAL CARDS ========== */
+        .cta-interstitial {
+            grid-column: 1 / -1;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cta-interstitial.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-interstitial-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 48px 56px;
+            gap: 32px;
+        }
+
+        .cta-interstitial-text h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .cta-interstitial-text p {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+
+        .cta-interstitial-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .cta-interstitial-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-interstitial-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* CTA Style 1 — Dark */
+        .cta-style-dark {
+            background: #111;
+            color: #fff;
+        }
+
+        .cta-style-dark .cta-interstitial-btn {
+            background: #fff;
+            color: #111;
+        }
+
+        .cta-style-dark .cta-interstitial-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        /* CTA Style 2 — Gradient */
+        .cta-style-gradient {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            color: #fff;
+        }
+
+        .cta-style-gradient .cta-interstitial-btn {
+            background: #fff;
+            color: #3b82f6;
+        }
+
+        .cta-style-gradient .cta-interstitial-btn:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* CTA Style 3 — Outline */
+        .cta-style-outline {
+            background: #fafafa;
+            border: 2px dashed #d1d5db;
+            color: #111;
+        }
+
+        .cta-style-outline .cta-interstitial-btn {
+            background: #111;
+            color: #fff;
+        }
+
+        .cta-style-outline .cta-interstitial-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ========== CARD COLOR THEMES ========== */
+
+        /* Arctic Air Systems */
+        .card-arctic::before { background: linear-gradient(90deg, #4a90a4, #e8721c); }
+        .card-arctic .project-industry { color: #4a90a4; }
+        .card-arctic .project-industry::before { background: #e8721c; }
+        .card-arctic .project-link { color: #4a90a4; }
+        .card-arctic:hover { box-shadow: 0 20px 60px rgba(74, 144, 164, 0.08), 0 0 0 1px rgba(74, 144, 164, 0.1); }
+
+        /* Meridian Group */
+        .card-meridian::before { background: linear-gradient(90deg, #1a2744, #c9a84c); }
+        .card-meridian .project-industry { color: #8a6d2b; }
+        .card-meridian .project-industry::before { background: #c9a84c; }
+        .card-meridian .project-link { color: #8a6d2b; }
+        .card-meridian:hover { box-shadow: 0 20px 60px rgba(201, 168, 76, 0.06), 0 0 0 1px rgba(201, 168, 76, 0.1); }
+
+        /* Veridian Health */
+        .card-veridian::before { background: linear-gradient(90deg, #0d9488, #14b8a6); }
+        .card-veridian .project-industry { color: #0d9488; }
+        .card-veridian .project-industry::before { background: #0d9488; }
+        .card-veridian .project-link { color: #0d9488; }
+        .card-veridian:hover { box-shadow: 0 20px 60px rgba(13, 148, 136, 0.08), 0 0 0 1px rgba(13, 148, 136, 0.1); }
+
+        /* Nexus Labs */
+        .card-nexus::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+        .card-nexus .project-industry { color: #7c3aed; }
+        .card-nexus .project-industry::before { background: #8b5cf6; }
+        .card-nexus .project-link { color: #7c3aed; }
+        .card-nexus:hover { box-shadow: 0 20px 60px rgba(139, 92, 246, 0.08), 0 0 0 1px rgba(139, 92, 246, 0.1); }
+
+        /* Cornerstone Bank */
+        .card-cornerstone::before { background: linear-gradient(90deg, #2d5016, #4a7c2e); }
+        .card-cornerstone .project-industry { color: #3d6b22; }
+        .card-cornerstone .project-industry::before { background: #2d5016; }
+        .card-cornerstone .project-link { color: #3d6b22; }
+        .card-cornerstone:hover { box-shadow: 0 20px 60px rgba(45, 80, 22, 0.08), 0 0 0 1px rgba(45, 80, 22, 0.1); }
+
+        /* Kingdomfall Games */
+        .card-kingdomfall::before { background: linear-gradient(90deg, #dc2626, #f97316); }
+        .card-kingdomfall .project-industry { color: #dc2626; }
+        .card-kingdomfall .project-industry::before { background: #dc2626; }
+        .card-kingdomfall .project-link { color: #dc2626; }
+        .card-kingdomfall:hover { box-shadow: 0 20px 60px rgba(220, 38, 38, 0.08), 0 0 0 1px rgba(220, 38, 38, 0.1); }
+
+        /* Lena Voss */
+        .card-lenavoss::before { background: linear-gradient(90deg, #e11d48, #f5e6e0); }
+        .card-lenavoss .project-industry { color: #be123c; }
+        .card-lenavoss .project-industry::before { background: #e11d48; }
+        .card-lenavoss .project-link { color: #be123c; }
+        .card-lenavoss:hover { box-shadow: 0 20px 60px rgba(225, 29, 72, 0.06), 0 0 0 1px rgba(225, 29, 72, 0.1); }
+
+        /* Solstice Yoga */
+        .card-solstice::before { background: linear-gradient(90deg, #4a6741, #b8a9c9); }
+        .card-solstice .project-industry { color: #4a6741; }
+        .card-solstice .project-industry::before { background: #b8a9c9; }
+        .card-solstice .project-link { color: #4a6741; }
+        .card-solstice:hover { box-shadow: 0 20px 60px rgba(74, 103, 65, 0.08), 0 0 0 1px rgba(74, 103, 65, 0.1); }
+
+        /* Ironclad Roofing */
+        .card-ironclad::before { background: linear-gradient(90deg, #2d2d2d, #c45a2c); }
+        .card-ironclad .project-industry { color: #c45a2c; }
+        .card-ironclad .project-industry::before { background: #c45a2c; }
+        .card-ironclad .project-link { color: #c45a2c; }
+        .card-ironclad:hover { box-shadow: 0 20px 60px rgba(196, 90, 44, 0.08), 0 0 0 1px rgba(196, 90, 44, 0.1); }
+
+        /* Byte & Brew */
+        .card-bytebrew::before { background: linear-gradient(90deg, #2c1810, #d4922a); }
+        .card-bytebrew .project-industry { color: #b07820; }
+        .card-bytebrew .project-industry::before { background: #d4922a; }
+        .card-bytebrew .project-link { color: #b07820; }
+        .card-bytebrew:hover { box-shadow: 0 20px 60px rgba(212, 146, 42, 0.08), 0 0 0 1px rgba(212, 146, 42, 0.1); }
+
+        /* Coastal Law Group */
+        .card-coastal::before { background: linear-gradient(90deg, #0f2440, #b8923f); }
+        .card-coastal .project-industry { color: #0f2440; }
+        .card-coastal .project-industry::before { background: #b8923f; }
+        .card-coastal .project-link { color: #0f2440; }
+        .card-coastal:hover { box-shadow: 0 20px 60px rgba(15, 36, 64, 0.08), 0 0 0 1px rgba(15, 36, 64, 0.1); }
+
+        /* PawPrint Pet Co */
+        .card-pawprint::before { background: linear-gradient(90deg, #e8735a, #3d6b4f); }
+        .card-pawprint .project-industry { color: #e8735a; }
+        .card-pawprint .project-industry::before { background: #3d6b4f; }
+        .card-pawprint .project-link { color: #e8735a; }
+        .card-pawprint:hover { box-shadow: 0 20px 60px rgba(232, 115, 90, 0.08), 0 0 0 1px rgba(232, 115, 90, 0.1); }
+
+        /* Ember & Oak */
+        .card-emberoak::before { background: linear-gradient(90deg, #1a1a1a, #c4571a); }
+        .card-emberoak .project-industry { color: #c4571a; }
+        .card-emberoak .project-industry::before { background: #b8943e; }
+        .card-emberoak .project-link { color: #c4571a; }
+        .card-emberoak:hover { box-shadow: 0 20px 60px rgba(196, 87, 26, 0.08), 0 0 0 1px rgba(196, 87, 26, 0.1); }
+
+        /* TerraVolt Energy */
+        .card-terravolt::before { background: linear-gradient(90deg, #0f172a, #22c55e); }
+        .card-terravolt .project-industry { color: #16a34a; }
+        .card-terravolt .project-industry::before { background: #22c55e; }
+        .card-terravolt .project-link { color: #16a34a; }
+        .card-terravolt:hover { box-shadow: 0 20px 60px rgba(34, 197, 94, 0.08), 0 0 0 1px rgba(34, 197, 94, 0.1); }
+
+        /* Summit Fitness */
+        .card-summit::before { background: linear-gradient(90deg, #1e3a5f, #e63946); }
+        .card-summit .project-industry { color: #1e3a5f; }
+        .card-summit .project-industry::before { background: #e63946; }
+        .card-summit .project-link { color: #1e3a5f; }
+        .card-summit:hover { box-shadow: 0 20px 60px rgba(30, 58, 95, 0.08), 0 0 0 1px rgba(30, 58, 95, 0.1); }
+
+        /* Drift Coffee Roasters */
+        .card-drift::before { background: linear-gradient(90deg, #3c2415, #c7956d); }
+        .card-drift .project-industry { color: #6b4c2e; }
+        .card-drift .project-industry::before { background: #c7956d; }
+        .card-drift .project-link { color: #6b4c2e; }
+        .card-drift:hover { box-shadow: 0 20px 60px rgba(60, 36, 21, 0.08), 0 0 0 1px rgba(60, 36, 21, 0.1); }
+
+        /* Pinecraft Furniture */
+        .card-pinecraft::before { background: linear-gradient(90deg, #5c4033, #d4a574); }
+        .card-pinecraft .project-industry { color: #5c4033; }
+        .card-pinecraft .project-industry::before { background: #d4a574; }
+        .card-pinecraft .project-link { color: #5c4033; }
+        .card-pinecraft:hover { box-shadow: 0 20px 60px rgba(92, 64, 51, 0.08), 0 0 0 1px rgba(92, 64, 51, 0.1); }
+
+        /* Skyline Architecture */
+        .card-skyline::before { background: linear-gradient(90deg, #1a1a2e, #4fc3f7); }
+        .card-skyline .project-industry { color: #1a1a2e; }
+        .card-skyline .project-industry::before { background: #4fc3f7; }
+        .card-skyline .project-link { color: #1a1a2e; }
+        .card-skyline:hover { box-shadow: 0 20px 60px rgba(79, 195, 247, 0.08), 0 0 0 1px rgba(79, 195, 247, 0.1); }
+
+        /* Bloom Floristry */
+        .card-bloom::before { background: linear-gradient(90deg, #2d5a27, #f48fb1); }
+        .card-bloom .project-industry { color: #2d5a27; }
+        .card-bloom .project-industry::before { background: #f48fb1; }
+        .card-bloom .project-link { color: #2d5a27; }
+        .card-bloom:hover { box-shadow: 0 20px 60px rgba(244, 143, 177, 0.08), 0 0 0 1px rgba(244, 143, 177, 0.1); }
+
+        /* Nightowl Security */
+        .card-nightowl::before { background: linear-gradient(90deg, #0d1117, #00e676); }
+        .card-nightowl .project-industry { color: #0d1117; }
+        .card-nightowl .project-industry::before { background: #00e676; }
+        .card-nightowl .project-link { color: #15803d; }
+        .card-nightowl:hover { box-shadow: 0 20px 60px rgba(0, 230, 118, 0.08), 0 0 0 1px rgba(0, 230, 118, 0.1); }
+
+        /* Trailhead Outdoors */
+        .card-trailhead::before { background: linear-gradient(90deg, #2e4a3e, #e8a838); }
+        .card-trailhead .project-industry { color: #2e4a3e; }
+        .card-trailhead .project-industry::before { background: #e8a838; }
+        .card-trailhead .project-link { color: #2e4a3e; }
+        .card-trailhead:hover { box-shadow: 0 20px 60px rgba(46, 74, 62, 0.08), 0 0 0 1px rgba(46, 74, 62, 0.1); }
+
+        /* Sapphire Dental */
+        .card-sapphire::before { background: linear-gradient(90deg, #1a365d, #63b3ed); }
+        .card-sapphire .project-industry { color: #1a365d; }
+        .card-sapphire .project-industry::before { background: #63b3ed; }
+        .card-sapphire .project-link { color: #1a365d; }
+        .card-sapphire:hover { box-shadow: 0 20px 60px rgba(99, 179, 237, 0.08), 0 0 0 1px rgba(99, 179, 237, 0.1); }
+
+        /* Volante Motors */
+        .card-volante::before { background: linear-gradient(90deg, #0a0a0a, #c0392b); }
+        .card-volante .project-industry { color: #0a0a0a; }
+        .card-volante .project-industry::before { background: #c0392b; }
+        .card-volante .project-link { color: #c0392b; }
+        .card-volante:hover { box-shadow: 0 20px 60px rgba(192, 57, 43, 0.08), 0 0 0 1px rgba(192, 57, 43, 0.1); }
+
+        /* Harmonia Music Academy */
+        .card-harmonia::before { background: linear-gradient(90deg, #2d1b4e, #f0c040); }
+        .card-harmonia .project-industry { color: #2d1b4e; }
+        .card-harmonia .project-industry::before { background: #f0c040; }
+        .card-harmonia .project-link { color: #2d1b4e; }
+        .card-harmonia:hover { box-shadow: 0 20px 60px rgba(240, 192, 64, 0.08), 0 0 0 1px rgba(240, 192, 64, 0.1); }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            padding: 120px 0;
+        }
+
+        .cta-card {
+            background: #111;
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta-label {
+            display: inline-block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #3b82f6;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-title .accent {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-subtitle {
+            font-size: 1.0625rem;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 480px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: #fff;
+            color: #111;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .cta-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ========== CONTACT FORM SECTION ========== */
+        .contact-section {
+            position: relative;
+            z-index: 1;
+            padding: 0 0 120px;
+        }
+
+        .contact-card {
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 24px;
+            padding: 80px 60px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .contact-header .section-label {
+            margin-bottom: 16px;
+        }
+
+        .contact-header h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #111;
+            margin-bottom: 12px;
+        }
+
+        .contact-header p {
+            font-size: 1.0625rem;
+            color: #6b7280;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            max-width: 640px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #374151;
+            letter-spacing: 0.01em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #fff;
+            color: #111;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: #111;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .form-submit svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-submit:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid #f0f0f0;
+            padding: 60px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .footer-logo {
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #111;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo .aisym-logo {
+            width: 28px;
+            height: 28px;
+            margin-right: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 0.8125rem;
+            color: #9ca3af;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .footer-copyright {
+            font-size: 0.8125rem;
+            color: #d1d5db;
+        }
+
+        .footer-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+
+        .footer-link {
+            font-size: 0.8125rem;
+            color: #9ca3af;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #3b82f6;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .project-card-inner {
+                padding: 32px;
+                min-height: 260px;
+            }
+
+            .project-name {
+                font-size: 1.5rem;
+            }
+
+            .stats-inner {
+                gap: 48px;
+            }
+
+            .cta-interstitial-inner {
+                padding: 36px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+                min-height: 90vh;
+            }
+
+            .hero-label {
+                font-size: 0.75rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-tagline {
+                margin-bottom: 36px;
+            }
+
+            .project-card-inner {
+                padding: 28px;
+                min-height: auto;
+            }
+
+            .project-name {
+                font-size: 1.375rem;
+            }
+
+            .project-description {
+                font-size: 0.875rem;
+                padding-bottom: 24px;
+            }
+
+            .section-subtitle {
+                margin-bottom: 40px;
+            }
+
+            .stats-inner {
+                gap: 32px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-card {
+                padding: 60px 32px;
+            }
+
+            .cta-interstitial-inner {
+                flex-direction: column;
+                text-align: center;
+                padding: 36px 28px;
+            }
+
+            .contact-card {
+                padding: 48px 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-brand {
+                align-items: center;
+            }
+
+            .footer-right {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .footer-dot {
+                display: none;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-card-inner {
+                padding: 24px;
+            }
+
+            .project-name {
+                font-size: 1.25rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .cta-interstitial-text h3 {
+                font-size: 1.375rem;
+            }
+        }
+
+        /* ========== SELECTION ========== */
+        ::selection {
+            background: rgba(59, 130, 246, 0.15);
+            color: #111;
+        }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fafafa;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Particles -->
+    <div class="particles" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="https://aisymmetricsolutions.com" class="nav-logo">
+                <img class="aisym-logo" src="./assets/logo.png" alt="AISymmetric Logo">
+                AISymmetric
+            </a>
+            <div class="nav-links">
+                <a href="#projects" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://aisymmetricsolutions.com/#contact" class="nav-cta" target="_blank" rel="noopener">
+                    Start a Conversation
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="14" height="14">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Web Portfolio</span>
+            <h1>Websites that work<br>as hard as <span class="accent">you do</span></h1>
+            <p class="hero-tagline">Twenty-four concepts. Twenty-four industries. One vision &mdash; bold design and smart engineering that speaks for itself.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                    Start a Strategy Conversation
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                    </svg>
+                </a>
+                <a href="#projects" class="btn-secondary">Explore Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-inner">
+                <div class="stat">
+                    <div class="stat-number">24<span class="accent">+</span></div>
+                    <div class="stat-label">Industry Concepts</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100<span class="accent">%</span></div>
+                    <div class="stat-label">Custom Built</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0<span class="accent">x</span></div>
+                    <div class="stat-label">Templates Used</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <span class="section-label">Selected Projects</span>
+            <h2 class="section-title">Crafted for <span class="accent">real industries</span></h2>
+            <p class="section-subtitle">Each project is a fully designed concept tailored to a specific industry, showcasing what we build for brands that demand results.</p>
+
+            <div class="project-grid">
+
+                <!-- 01 — Arctic Air Systems -->
+                <a href="./arctic-air/" class="project-card card-arctic">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">HVAC</span>
+                            <span class="project-number">01</span>
+                        </div>
+                        <h3 class="project-name">Arctic Air Systems</h3>
+                        <p class="project-description">Complete HVAC service platform with scheduling, maintenance plans, and emergency dispatch.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 02 — Meridian Group -->
+                <a href="./meridian-group/" class="project-card card-meridian">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Real Estate</span>
+                            <span class="project-number">02</span>
+                        </div>
+                        <h3 class="project-name">Meridian Group</h3>
+                        <p class="project-description">Luxury real estate platform with immersive property showcases and virtual tours.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 03 — Veridian Health -->
+                <a href="./veridian-health/" class="project-card card-veridian">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">MedTech</span>
+                            <span class="project-number">03</span>
+                        </div>
+                        <h3 class="project-name">Veridian Health</h3>
+                        <p class="project-description">Healthcare technology platform connecting patients with cutting-edge diagnostic tools.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 04 — Nexus Labs -->
+                <a href="./nexus-labs/" class="project-card card-nexus">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Technology</span>
+                            <span class="project-number">04</span>
+                        </div>
+                        <h3 class="project-name">Nexus Labs</h3>
+                        <p class="project-description">AI research lab pushing boundaries in machine learning and neural interfaces.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- ★ CTA CARD 1 — After card 4 -->
+                <div class="cta-interstitial cta-style-dark">
+                    <div class="cta-interstitial-inner">
+                        <div class="cta-interstitial-text">
+                            <h3>Your brand deserves better than a template.</h3>
+                            <p>Every pixel, every interaction — engineered for your business.</p>
+                        </div>
+                        <a href="#contact" class="cta-interstitial-btn">
+                            Let's Talk
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 05 — Cornerstone Bank -->
+                <a href="./cornerstone-bank/" class="project-card card-cornerstone">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Regional Banking</span>
+                            <span class="project-number">05</span>
+                        </div>
+                        <h3 class="project-name">Cornerstone Bank</h3>
+                        <p class="project-description">Community-focused banking with modern digital tools and personalized service.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 06 — Kingdomfall Games -->
+                <a href="./kingdomfall-games/" class="project-card card-kingdomfall">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Board Games</span>
+                            <span class="project-number">06</span>
+                        </div>
+                        <h3 class="project-name">Kingdomfall Games</h3>
+                        <p class="project-description">Tabletop gaming company crafting immersive strategy worlds and collectible experiences.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 07 — Lena Voss -->
+                <a href="./lena-voss/" class="project-card card-lenavoss">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Fashion / Influencer</span>
+                            <span class="project-number">07</span>
+                        </div>
+                        <h3 class="project-name">Lena Voss</h3>
+                        <p class="project-description">Fashion and lifestyle brand with editorial content, collaborations, and curated collections.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 08 — Solstice Yoga -->
+                <a href="./solstice-yoga/" class="project-card card-solstice">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Wellness</span>
+                            <span class="project-number">08</span>
+                        </div>
+                        <h3 class="project-name">Solstice Yoga</h3>
+                        <p class="project-description">Premium yoga studio with class scheduling, instructor profiles, and membership management.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- ★ CTA CARD 2 — After card 8 -->
+                <div class="cta-interstitial cta-style-gradient">
+                    <div class="cta-interstitial-inner">
+                        <div class="cta-interstitial-text">
+                            <h3>What would your dream website look like?</h3>
+                            <p>We turn bold ideas into digital reality — no templates, no shortcuts.</p>
+                        </div>
+                        <a href="#contact" class="cta-interstitial-btn">
+                            Start the Conversation
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 09 — Ironclad Roofing -->
+                <a href="./ironclad-roofing/" class="project-card card-ironclad">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Construction</span>
+                            <span class="project-number">09</span>
+                        </div>
+                        <h3 class="project-name">Ironclad Roofing</h3>
+                        <p class="project-description">Residential and commercial roofing with free estimates, emergency repair, and lifetime warranties.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 10 — Byte & Brew -->
+                <a href="./byte-and-brew/" class="project-card card-bytebrew">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Cafe / Coworking</span>
+                            <span class="project-number">10</span>
+                        </div>
+                        <h3 class="project-name">Byte & Brew</h3>
+                        <p class="project-description">Tech-forward coffee house and coworking space with events, menu, and membership booking.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 11 — Coastal Law Group -->
+                <a href="./coastal-law/" class="project-card card-coastal">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Legal</span>
+                            <span class="project-number">11</span>
+                        </div>
+                        <h3 class="project-name">Coastal Law Group</h3>
+                        <p class="project-description">Prestigious law firm specializing in business law, estate planning, and litigation.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 12 — PawPrint Pet Co -->
+                <a href="./pawprint-pet-co/" class="project-card card-pawprint">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Pet Services</span>
+                            <span class="project-number">12</span>
+                        </div>
+                        <h3 class="project-name">PawPrint Pet Co</h3>
+                        <p class="project-description">Modern pet care with grooming, daycare, boarding, and training — all bookable online.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- ★ CTA CARD 3 — After card 12 -->
+                <div class="cta-interstitial cta-style-outline">
+                    <div class="cta-interstitial-inner">
+                        <div class="cta-interstitial-text">
+                            <h3>Impressed? Imagine what we'd build for you.</h3>
+                            <p>Strategy, design, and engineering — all under one roof.</p>
+                        </div>
+                        <a href="#contact" class="cta-interstitial-btn">
+                            Get a Free Consultation
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 13 — Ember & Oak -->
+                <a href="./ember-and-oak/" class="project-card card-emberoak">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Fine Dining</span>
+                            <span class="project-number">13</span>
+                        </div>
+                        <h3 class="project-name">Ember & Oak</h3>
+                        <p class="project-description">Upscale farm-to-table restaurant with seasonal menus, wine program, and private events.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 14 — TerraVolt Energy -->
+                <a href="./terravolt-energy/" class="project-card card-terravolt">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Clean Energy</span>
+                            <span class="project-number">14</span>
+                        </div>
+                        <h3 class="project-name">TerraVolt Energy</h3>
+                        <p class="project-description">Residential and commercial solar solutions with battery storage and EV charging installations.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 15 — Summit Fitness -->
+                <a href="./summit-fitness/" class="project-card card-summit">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Gym / Fitness</span>
+                            <span class="project-number">15</span>
+                        </div>
+                        <h3 class="project-name">Summit Fitness</h3>
+                        <p class="project-description">High-performance gym with personal training, group classes, and nutrition coaching.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 16 — Drift Coffee Roasters -->
+                <a href="./drift-coffee/" class="project-card card-drift">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Specialty Coffee</span>
+                            <span class="project-number">16</span>
+                        </div>
+                        <h3 class="project-name">Drift Coffee Roasters</h3>
+                        <p class="project-description">Small-batch roastery with bean subscriptions, cafe locations, and brewing guides.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- ★ CTA CARD 4 — After card 16 -->
+                <div class="cta-interstitial cta-style-dark">
+                    <div class="cta-interstitial-inner">
+                        <div class="cta-interstitial-text">
+                            <h3>Still scrolling? You've got good taste.</h3>
+                            <p>Let's channel that taste into a website that converts.</p>
+                        </div>
+                        <a href="#contact" class="cta-interstitial-btn">
+                            Book a Call
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 17 — Pinecraft Furniture -->
+                <a href="./pinecraft-furniture/" class="project-card card-pinecraft">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Custom Furniture</span>
+                            <span class="project-number">17</span>
+                        </div>
+                        <h3 class="project-name">Pinecraft Furniture</h3>
+                        <p class="project-description">Handcrafted furniture studio with custom commissions, a gallery, and workshop tours.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 18 — Skyline Architecture -->
+                <a href="./skyline-architecture/" class="project-card card-skyline">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Architecture</span>
+                            <span class="project-number">18</span>
+                        </div>
+                        <h3 class="project-name">Skyline Architecture</h3>
+                        <p class="project-description">Award-winning firm designing residential, commercial, and urban spaces with vision.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 19 — Bloom Floristry -->
+                <a href="./bloom-floristry/" class="project-card card-bloom">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Floristry</span>
+                            <span class="project-number">19</span>
+                        </div>
+                        <h3 class="project-name">Bloom Floristry</h3>
+                        <p class="project-description">Artisan floral studio with wedding packages, event design, and same-day delivery.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 20 — Nightowl Security -->
+                <a href="./nightowl-security/" class="project-card card-nightowl">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Cybersecurity</span>
+                            <span class="project-number">20</span>
+                        </div>
+                        <h3 class="project-name">Nightowl Security</h3>
+                        <p class="project-description">Enterprise cybersecurity with penetration testing, SOC services, and incident response.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- ★ CTA CARD 5 — After card 20 -->
+                <div class="cta-interstitial cta-style-gradient">
+                    <div class="cta-interstitial-inner">
+                        <div class="cta-interstitial-text">
+                            <h3>We don't do cookie-cutter. Neither should you.</h3>
+                            <p>From first click to final launch — we handle everything.</p>
+                        </div>
+                        <a href="#contact" class="cta-interstitial-btn">
+                            Tell Us Your Vision
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 21 — Trailhead Outdoors -->
+                <a href="./trailhead-outdoors/" class="project-card card-trailhead">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Outdoor / Adventure</span>
+                            <span class="project-number">21</span>
+                        </div>
+                        <h3 class="project-name">Trailhead Outdoors</h3>
+                        <p class="project-description">Adventure gear and guided experiences — from summit treks to backcountry camping.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 22 — Sapphire Dental -->
+                <a href="./sapphire-dental/" class="project-card card-sapphire">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Dentistry</span>
+                            <span class="project-number">22</span>
+                        </div>
+                        <h3 class="project-name">Sapphire Dental</h3>
+                        <p class="project-description">Modern dental practice with cosmetic, orthodontic, and family dentistry services.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 23 — Volante Motors -->
+                <a href="./volante-motors/" class="project-card card-volante">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Automotive</span>
+                            <span class="project-number">23</span>
+                        </div>
+                        <h3 class="project-name">Volante Motors</h3>
+                        <p class="project-description">Premium auto dealership with virtual showroom, financing tools, and concierge service.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 24 — Harmonia Music Academy -->
+                <a href="./harmonia-music/" class="project-card card-harmonia">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <span class="project-industry">Music Education</span>
+                            <span class="project-number">24</span>
+                        </div>
+                        <h3 class="project-name">Harmonia Music Academy</h3>
+                        <p class="project-description">Music school with private lessons, ensemble programs, and performance recitals for all ages.</p>
+                        <span class="project-link">
+                            View Project
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <span class="cta-label">Get Started</span>
+                <h2 class="cta-title">Ready to build something <span class="accent">remarkable</span>?</h2>
+                <p class="cta-subtitle">From strategy to launch, we design and engineer digital experiences that drive real business results.</p>
+                <a href="#contact" class="cta-btn">
+                    Start a Conversation
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-header">
+                    <span class="section-label">Start the Conversation</span>
+                    <h2>Let's build something <span class="accent">together</span></h2>
+                    <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+                </div>
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?success=true">
+                    <input type="hidden" name="form-name" value="contact">
+                    <input type="hidden" name="subject" value="New Portfolio Inquiry — webportfolio.aisymmetricsolutions.com">
+                    <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company / Brand</label>
+                            <input type="text" id="company" name="company" placeholder="Acme Corp">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Project Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="" disabled selected>Select a range</option>
+                                <option value="under-5k">Under $5,000</option>
+                                <option value="5k-15k">$5,000 – $15,000</option>
+                                <option value="15k-50k">$15,000 – $50,000</option>
+                                <option value="50k-plus">$50,000+</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" name="message" placeholder="What are you looking to build? What's the timeline? Any inspiration you love?" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        Send Message
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="https://aisymmetricsolutions.com" class="footer-logo">
+                        <img class="aisym-logo" src="./assets/logo.png" alt="AISymmetric Logo">
+                        AISymmetric
+                    </a>
+                    <div class="footer-tagline">Architecting Intelligent Enterprises</div>
+                </div>
+                <div class="footer-right">
+                    <span class="footer-copyright">&copy; 2026 AISymmetric</span>
+                    <div class="footer-dot"></div>
+                    <a href="https://aisymmetricsolutions.com" class="footer-link" target="_blank" rel="noopener">aisymmetricsolutions.com</a>
+                    <div class="footer-dot"></div>
+                    <a href="mailto:evangelist@aisymmetricsolutions.com" class="footer-link">evangelist@aisymmetricsolutions.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimal JS -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Generate floating particles
+            var particlesContainer = document.querySelector('.particles');
+            for (var i = 0; i < 20; i++) {
+                var p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (12 + Math.random() * 18) + 's';
+                p.style.animationDelay = (Math.random() * 15) + 's';
+                p.style.width = (2 + Math.random() * 4) + 'px';
+                p.style.height = p.style.width;
+                particlesContainer.appendChild(p);
+            }
+
+            // Navbar scroll effect
+            var nav = document.getElementById('nav');
+            function handleScroll() {
+                if (window.scrollY > 60) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            // Intersection Observer for card reveal (project cards + CTA interstitials)
+            var cards = document.querySelectorAll('.project-card, .cta-interstitial');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var card = entry.target;
+                        var allCards = Array.from(cards);
+                        var delay = (allCards.indexOf(card) % 2) * 120;
+                        setTimeout(function() {
+                            card.classList.add('visible');
+                        }, delay);
+                        observer.unobserve(card);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            cards.forEach(function(card) { observer.observe(card); });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Handle form success via URL param
+            if (window.location.search.indexOf('success=true') > -1) {
+                var form = document.querySelector('.contact-form');
+                if (form) {
+                    form.innerHTML = '<div style="text-align:center;padding:40px 0;"><h3 style="font-size:1.5rem;font-weight:700;color:#111;margin-bottom:12px;">Message sent!</h3><p style="color:#6b7280;font-size:1.0625rem;">Thanks for reaching out. We\'ll be in touch within 24 hours.</p></div>';
+                }
+            }
+        })();
+    </script>
+
+</body>
+</html>

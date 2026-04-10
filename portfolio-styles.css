@@ -1,0 +1,223 @@
+/* ============================================
+   Portfolio Gallery Styles
+   ============================================ */
+
+.portfolio-page {
+  background: var(--white);
+}
+
+/* Portfolio Hero */
+.portfolio-hero {
+  text-align: center;
+  padding: 140px 24px 40px;
+}
+
+.portfolio-hero .hero-badge {
+  background: rgba(59, 130, 246, 0.06);
+  border-color: rgba(59, 130, 246, 0.12);
+}
+
+/* Filter Tabs */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-xl);
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-family);
+}
+
+.filter-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.filter-btn.active {
+  background: var(--graphite);
+  border-color: var(--graphite);
+  color: var(--white);
+}
+
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Portfolio Card */
+.portfolio-card {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+  background: var(--white);
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.portfolio-card.hidden {
+  display: none;
+}
+
+/* Card Visual — Website Mockup */
+.portfolio-card-visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.portfolio-card-mockup {
+  width: 85%;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-smooth);
+}
+
+.portfolio-card:hover .portfolio-card-mockup {
+  transform: scale(1.03);
+}
+
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.mockup-bar span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.mockup-bar span:nth-child(1) { background: #ff5f57; }
+.mockup-bar span:nth-child(2) { background: #ffbd2e; }
+.mockup-bar span:nth-child(3) { background: #28ca41; }
+
+.mockup-content {
+  padding: 12px;
+}
+
+.mockup-hero-block {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  border-radius: 4px;
+  margin-bottom: 8px;
+  opacity: 0.15;
+}
+
+.mockup-text-lines {
+  margin-bottom: 8px;
+}
+
+.mockup-line {
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.mockup-line.w80 { width: 80%; }
+.mockup-line.w60 { width: 60%; }
+
+.mockup-cards-row {
+  display: flex;
+  gap: 6px;
+}
+
+.mockup-mini-card {
+  flex: 1;
+  height: 24px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-radius: 3px;
+}
+
+/* Card Info */
+.portfolio-card-info {
+  padding: 20px 24px 24px;
+}
+
+.portfolio-industry {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.portfolio-card-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.portfolio-card-info p {
+  font-size: 14px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-hero {
+    padding: 120px 24px 32px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .portfolio-filters {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+}

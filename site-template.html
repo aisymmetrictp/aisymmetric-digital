@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics — Replace GA_MEASUREMENT_ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <title>COMPANY_NAME — TAGLINE</title>
+  <meta name="description" content="COMPANY_DESCRIPTION" />
+  <link rel="canonical" href="https://YOURDOMAIN.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="COMPANY_NAME — TAGLINE" />
+  <meta property="og:description" content="COMPANY_DESCRIPTION" />
+  <meta property="og:url" content="https://YOURDOMAIN.com/" />
+  <meta property="og:image" content="https://YOURDOMAIN.com/assets/images/logo.png" />
+  <meta property="og:site_name" content="COMPANY_NAME" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="COMPANY_NAME — TAGLINE" />
+  <meta name="twitter:description" content="COMPANY_DESCRIPTION" />
+  <meta name="twitter:image" content="https://YOURDOMAIN.com/assets/images/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/images/logo.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "COMPANY_NAME",
+    "legalName": "COMPANY_LEGAL_NAME",
+    "url": "https://YOURDOMAIN.com",
+    "logo": "https://YOURDOMAIN.com/assets/images/logo.png",
+    "description": "COMPANY_DESCRIPTION",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "STATE",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@YOURDOMAIN.com",
+      "contactType": "sales"
+    },
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <!-- Neural Network Canvas Background (optional — requires neural-network.js) -->
+  <canvas id="neural-canvas"></canvas>
+
+  <!-- Cursor Particles Canvas (optional — requires interactions.js) -->
+  <canvas id="cursor-canvas"></canvas>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="assets/images/logo.png" alt="COMPANY_NAME" class="logo-icon" />
+        <span>COMPANY_NAME</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#platforms">Platforms</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#tools">Explore</a>
+        <a href="#team">Team</a>
+        <a href="#contact" class="nav-cta">Start a Conversation</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services">Services</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#case-studies">Case Studies</a>
+    <a href="#tools">Explore</a>
+    <a href="#team">Team</a>
+    <a href="#contact" class="nav-cta">Start a Conversation</a>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        BADGE_TEXT
+      </div>
+      <h1 class="hero-title">
+        HEADLINE_LINE_1<br />
+        <span class="gradient-text">GRADIENT_WORD</span> HEADLINE_LINE_2
+      </h1>
+      <p class="hero-subtitle">
+        HERO_SUBTITLE_TEXT
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          PRIMARY_CTA_TEXT
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#case-studies" class="btn btn-secondary">
+          SECONDARY_CTA_TEXT
+        </a>
+      </div>
+      <div class="hero-metrics">
+        <!-- Metric 1 -->
+        <div class="metric">
+          <span class="metric-value" data-count="50">0</span><span class="metric-suffix">+</span>
+          <span class="metric-label">METRIC_1_LABEL</span>
+        </div>
+        <div class="metric-divider"></div>
+        <!-- Metric 2 -->
+        <div class="metric">
+          <span class="metric-value" data-count="100">0</span><span class="metric-suffix">s</span>
+          <span class="metric-label">METRIC_2_LABEL</span>
+        </div>
+        <div class="metric-divider"></div>
+        <!-- Metric 3 -->
+        <div class="metric">
+          <span class="metric-value" data-count="40">0</span><span class="metric-suffix">%</span>
+          <span class="metric-label">METRIC_3_LABEL</span>
+        </div>
+        <div class="metric-divider"></div>
+        <!-- Metric 4 -->
+        <div class="metric">
+          <span class="metric-value" data-count="98">0</span><span class="metric-suffix">%</span>
+          <span class="metric-label">METRIC_4_LABEL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 1: SERVICES (6-card grid)
+       ============================================================ -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE_START <span class="gradient-text">GRADIENT_WORDS</span></h2>
+        <p class="section-subtitle">SUBTITLE_TEXT</p>
+      </div>
+      <div class="services-grid">
+        <!-- Service Card — repeat as needed (3-column grid) -->
+        <div class="service-card" data-aos>
+          <div class="service-icon">
+            <!-- Replace with your SVG icon -->
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#3B82F6" stroke-width="1.5"/><path d="M24 14v20M14 24h20" stroke="#3B82F6" stroke-width="1.5"/></svg>
+          </div>
+          <h3>SERVICE_TITLE</h3>
+          <p>SERVICE_DESCRIPTION</p>
+        </div>
+        <!-- Add more service cards as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2: CAPABILITIES / ARCHITECTURE DIAGRAM
+       ============================================================ -->
+  <section class="section capabilities" id="capabilities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE <span class="gradient-text">GRADIENT</span> TITLE_END</h2>
+        <p class="section-subtitle">SUBTITLE_TEXT</p>
+      </div>
+      <div class="architecture-diagram" id="architecture-diagram">
+        <!-- Top Layer -->
+        <div class="arch-layer arch-layer-top">
+          <div class="arch-node" data-label="NODE_LABEL">
+            <div class="arch-node-inner">
+              <!-- SVG icon -->
+              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span>NODE_LABEL</span>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-node" data-label="NODE_LABEL">
+            <div class="arch-node-inner">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 6a10 10 0 110 20 10 10 0 010-20z" stroke="currentColor" stroke-width="1.5"/><path d="M16 6v10l7 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span>NODE_LABEL</span>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-node" data-label="NODE_LABEL">
+            <div class="arch-node-inner">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M4 24l7-7 5 5 6-10 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>NODE_LABEL</span>
+          </div>
+        </div>
+        <!-- Flow Lines -->
+        <div class="arch-flow-lines">
+          <div class="arch-flow-line"></div>
+          <div class="arch-flow-line"></div>
+          <div class="arch-flow-line"></div>
+        </div>
+        <!-- Middle Layer -->
+        <div class="arch-layer arch-layer-mid">
+          <div class="arch-node" data-label="NODE_LABEL">
+            <div class="arch-node-inner">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M12 16h8" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span>NODE_LABEL</span>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-node" data-label="NODE_LABEL">
+            <div class="arch-node-inner">
+              <svg viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="10" rx="10" ry="4" stroke="currentColor" stroke-width="1.5"/><path d="M6 10v12c0 2.2 4.5 4 10 4s10-1.8 10-4V10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span>NODE_LABEL</span>
+          </div>
+        </div>
+        <!-- Flow Lines -->
+        <div class="arch-flow-lines">
+          <div class="arch-flow-line"></div>
+          <div class="arch-flow-line"></div>
+        </div>
+        <!-- Bottom Layer -->
+        <div class="arch-layer arch-layer-bottom">
+          <div class="arch-node arch-node-large" data-label="NODE_LABEL">
+            <div class="arch-node-inner">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h24M4 20h24M12 4v24M20 4v24" stroke="currentColor" stroke-width="0.75" opacity="0.3"/></svg>
+            </div>
+            <span>NODE_LABEL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: PLATFORMS (3-column icon + text cards)
+       ============================================================ -->
+  <section class="section platforms" id="platforms">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE <span class="gradient-text">GRADIENT</span></h2>
+        <p class="section-subtitle">SUBTITLE_TEXT</p>
+      </div>
+      <div class="platforms-grid">
+        <!-- Platform Card — repeat as needed -->
+        <div class="platform-card" data-aos>
+          <div class="platform-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#3B82F6" stroke-width="1.5"/></svg>
+          </div>
+          <h4>PLATFORM_NAME</h4>
+          <p>SHORT_DESCRIPTION</p>
+        </div>
+        <!-- Add more platform cards as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4: APPROACH / METHODOLOGY (timeline with steps)
+       ============================================================ -->
+  <section class="section approach" id="approach">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE <span class="gradient-text">GRADIENT</span></h2>
+        <p class="section-subtitle">SUBTITLE_TEXT</p>
+      </div>
+      <div class="approach-timeline">
+        <div class="approach-line" id="approach-line">
+          <div class="approach-line-fill"></div>
+        </div>
+        <div class="approach-steps">
+          <!-- Step — repeat as needed -->
+          <div class="approach-step" data-aos>
+            <div class="step-number">01</div>
+            <div class="step-node"></div>
+            <div class="step-content">
+              <h3>STEP_TITLE</h3>
+              <p>STEP_DESCRIPTION</p>
+            </div>
+          </div>
+          <div class="approach-step" data-aos>
+            <div class="step-number">02</div>
+            <div class="step-node"></div>
+            <div class="step-content">
+              <h3>STEP_TITLE</h3>
+              <p>STEP_DESCRIPTION</p>
+            </div>
+          </div>
+          <div class="approach-step" data-aos>
+            <div class="step-number">03</div>
+            <div class="step-node"></div>
+            <div class="step-content">
+              <h3>STEP_TITLE</h3>
+              <p>STEP_DESCRIPTION</p>
+            </div>
+          </div>
+          <div class="approach-step" data-aos>
+            <div class="step-number">04</div>
+            <div class="step-node"></div>
+            <div class="step-content">
+              <h3>STEP_TITLE</h3>
+              <p>STEP_DESCRIPTION</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: CASE STUDIES (3-card grid with metrics)
+       ============================================================ -->
+  <section class="section case-studies" id="case-studies">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE <span class="gradient-text">GRADIENT</span> TITLE_END</h2>
+        <p class="section-subtitle">SUBTITLE_TEXT</p>
+      </div>
+      <div class="cases-grid">
+        <!-- Case Study Card — repeat as needed -->
+        <div class="case-card" data-aos>
+          <div class="case-tag">INDUSTRY_TAG</div>
+          <h3>CASE_STUDY_TITLE</h3>
+          <p>CASE_STUDY_DESCRIPTION</p>
+          <div class="case-metrics">
+            <div class="case-metric">
+              <span class="case-metric-value">VALUE%</span>
+              <span class="case-metric-label">METRIC_LABEL</span>
+            </div>
+            <div class="case-metric">
+              <span class="case-metric-value">VALUE</span>
+              <span class="case-metric-label">METRIC_LABEL</span>
+            </div>
+          </div>
+          <div class="case-pattern"></div>
+        </div>
+        <!-- Add more case study cards as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6: TOOLS / EXPLORE (dark cards with accent bars)
+       ============================================================ -->
+  <section class="section tools-showcase" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE & <span class="gradient-text">GRADIENT</span></h2>
+      </div>
+      <div class="tools-grid">
+        <!-- Tool Card — repeat as needed -->
+        <a href="URL" target="_blank" rel="noopener" class="tool-card" data-aos>
+          <div class="tool-card-accent tool-accent-blue"></div>
+          <span class="tool-label">CARD_LABEL</span>
+          <h3 class="tool-title">TOOL_TITLE</h3>
+          <p class="tool-desc">TOOL_DESCRIPTION</p>
+          <span class="tool-cta">CTA_TEXT <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <!-- Accent options: tool-accent-blue, tool-accent-cyan, tool-accent-gradient -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 7: WHY US (2-column bullet points)
+       ============================================================ -->
+  <section class="section why" id="why">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SECTION_TAG</span>
+        <h2 class="section-title">TITLE. <span class="gradient-text">GRADIENT.</span></h2>
+      </div>
+      <div class="why-grid">
+        <!-- Why Item — repeat as needed -->
+        <div class="why-item" data-aos>
+          <div class="why-marker"></div>
+          <h3>REASON_TITLE</h3>
+          <p>REASON_DESCRIPTION</p>
+        </div>
+        <!-- Add more why items as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 8: TEAM (flip cards with subsection labels)
+       ============================================================ -->
+  <section class="section team" id="team">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Meet the Team</span>
+        <h2 class="section-title">The minds behind <span class="gradient-text">COMPANY_NAME</span></h2>
+        <p class="section-subtitle">TEAM_SUBTITLE</p>
+      </div>
+
+      <!-- Subsection: Leadership (3-column) -->
+      <div class="team-subsection">
+        <h3 class="team-subsection-title">Leadership & <span class="gradient-text">Strategy</span></h3>
+      </div>
+      <div class="team-grid team-grid-3">
+        <!-- Team Card — repeat as needed -->
+        <a href="/MEMBER_SLUG" class="team-card" data-aos>
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <div class="team-photo">
+                <img src="assets/images/MEMBER_PHOTO.jpg" alt="MEMBER_NAME" />
+              </div>
+              <h3>MEMBER_NAME</h3>
+              <p class="team-role">MEMBER_TITLE</p>
+              <span class="team-flip-hint">Click to learn more</span>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-content">
+                <h3>MEMBER_NAME</h3>
+                <p class="team-role">MEMBER_TITLE</p>
+                <p class="team-bio">MEMBER_BIO_TEXT</p>
+                <span class="team-link-hint">View Profile &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Add more team cards as needed -->
+      </div>
+
+      <!-- Subsection: Engineers (2-column) -->
+      <div class="team-subsection">
+        <h3 class="team-subsection-title">Our <span class="gradient-text">Engineers</span></h3>
+      </div>
+      <div class="team-grid">
+        <!-- Team cards (2-column default) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION (split layout: text + form)
+       ============================================================ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-content">
+          <span class="section-tag">Get Started</span>
+          <h2 class="section-title">Ready to build your <span class="gradient-text">next project</span>?</h2>
+          <p class="section-subtitle">CONTACT_SUBTITLE_TEXT</p>
+        </div>
+        <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" name="company" placeholder="Company" />
+          </div>
+          <div class="form-group">
+            <select name="interest">
+              <option value="" disabled selected>What are you interested in?</option>
+              <option>OPTION_1</option>
+              <option>OPTION_2</option>
+              <option>OPTION_3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Tell us about your project" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            SUBMIT_CTA_TEXT
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <img src="assets/images/logo.png" alt="COMPANY_NAME" class="logo-icon" />
+            <span>COMPANY_NAME</span>
+          </a>
+          <p class="footer-tagline">TAGLINE</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Services</h5>
+            <a href="#services">SERVICE_1</a>
+            <a href="#services">SERVICE_2</a>
+            <a href="#services">SERVICE_3</a>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#case-studies">Case Studies</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h5>Legal</h5>
+            <a href="/terms#terms-of-service">Terms of Service</a>
+            <a href="/terms#privacy-policy">Privacy Policy</a>
+          </div>
+          <div class="footer-col">
+            <h5>Connect</h5>
+            <a href="https://linkedin.com/company/COMPANY" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:contact@YOURDOMAIN.com">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 COMPANY_NAME. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="neural-network.js"></script>
+  <script src="interactions.js"></script>
+</body>
+</html>
