@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapidFix Auto Repair | Auto Repair Website</title>
+    <meta name="description" content="Independent auto repair shop offering full-service vehicle maintenance, diagnostics, brake and suspension work, and engine repair.">
+    <meta property="og:title" content="RapidFix Auto Repair - Honest Repairs. Fast Turnaround.">
+    <meta property="og:description" content="Independent auto repair shop offering full-service vehicle maintenance, diagnostics, brake and suspension work, and engine repair.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/rapidfix-auto/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+    :root {
+      --accent: #2a2a2a;
+      --accent2: #e04040;
+      --dark: #121212;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* --- Navbar --- */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: all 0.4s var(--ease); }
+    .navbar.scrolled { background: rgba(255,255,255,0.82); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: 0 1px 24px rgba(0,0,0,0.08); padding: 10px 0; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 700; font-size: 1.2rem; color: #fff; transition: color 0.3s var(--ease); }
+    .navbar.scrolled .nav-logo { color: var(--dark); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: color 0.3s var(--ease); }
+    .nav-links a:hover { color: #fff; }
+    .navbar.scrolled .nav-links a { color: #555; }
+    .navbar.scrolled .nav-links a:hover { color: var(--dark); }
+    .nav-cta { background: var(--accent); color: #fff !important; padding: 10px 22px; border-radius: 100px; font-weight: 600 !important; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .navbar.scrolled .nav-cta { color: #fff !important; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 28px; height: 20px; position: relative; }
+    .nav-toggle span { display: block; width: 100%; height: 2px; background: #fff; position: absolute; left: 0; transition: all 0.3s var(--ease); }
+    .navbar.scrolled .nav-toggle span { background: var(--dark); }
+    .nav-toggle span:nth-child(1) { top: 0; }
+    .nav-toggle span:nth-child(2) { top: 9px; }
+    .nav-toggle span:nth-child(3) { top: 18px; }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg); top: 9px; }
+
+    /* --- Reveal --- */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* --- Footer --- */
+    .site-footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 32px; text-align: center; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-brand { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .footer-copy { font-size: 0.85rem; margin-bottom: 6px; }
+    .footer-credit { font-size: 0.85rem; }
+    .footer-credit a { color: var(--accent); font-weight: 600; }
+    .footer-credit a:hover { text-decoration: underline; }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .hero-content h1 { font-size: 2.8rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--dark); flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { color: rgba(255,255,255,0.8) !important; font-size: 1.2rem; }
+      .nav-toggle { display: block; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .services-grid, .features-grid { grid-template-columns: 1fr; }
+      .hero-split { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .hero-content h1 { font-size: 1.7rem; }
+      .section-inner { padding: 0 18px; }
+      .stats-row, .stats-grid { flex-direction: column; gap: 20px; }
+    }
+
+/* --- PRECISION ARCHETYPE --- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  background: var(--dark); position: relative; overflow: hidden;
+}
+/* Animated dot grid */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: gridShift 20s linear infinite;
+}
+@keyframes gridShift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(32px, 32px); }
+}
+.hero-line {
+  position: absolute; background: linear-gradient(180deg, transparent, var(--accent), transparent);
+  width: 1px; height: 200px; opacity: 0.15;
+}
+.hero-line-1 { left: 20%; top: 0; animation: lineDrift 6s ease-in-out infinite; }
+.hero-line-2 { left: 50%; top: -50px; animation: lineDrift 8s ease-in-out 2s infinite; }
+.hero-line-3 { left: 80%; top: -20px; animation: lineDrift 7s ease-in-out 4s infinite; }
+@keyframes lineDrift { 0%,100% { transform: translateY(0); opacity: 0.15; } 50% { transform: translateY(100vh); opacity: 0.3; } }
+
+.hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 32px; width: 100%; }
+.hero-eyebrow {
+  display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--accent); border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 16px; border-radius: 4px; margin-bottom: 24px;
+}
+.hero-content h1 {
+  font-size: 3.8rem; font-weight: 800; color: #fff; line-height: 1.08;
+  letter-spacing: -0.03em; margin-bottom: 20px; max-width: 680px;
+}
+.hero-content p { font-size: 1.15rem; color: rgba(255,255,255,0.5); max-width: 520px; margin-bottom: 40px; line-height: 1.7; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px; background: var(--accent);
+  color: #fff; padding: 14px 32px; border-radius: 4px;
+  font-weight: 600; font-size: 0.95rem;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+.hero-cta svg { width: 16px; height: 16px; }
+
+/* Metrics bar */
+.metrics-bar {
+  display: flex; gap: 0; margin-top: 64px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.metric-item { flex: 1; padding: 28px 0; border-right: 1px solid rgba(255,255,255,0.08); }
+.metric-item:last-child { border-right: none; }
+.metric-value { font-size: 1.8rem; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; }
+.metric-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Services */
+.services { padding: 120px 0; background: #fafafa; }
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 12px; }
+.section-title { font-size: 2.4rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.02em; }
+.section-subtitle { font-size: 1.05rem; color: #666; max-width: 540px; margin-bottom: 56px; line-height: 1.7; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e0e0e0; }
+.service-card {
+  background: #fff; padding: 40px 32px;
+  transition: background 0.5s var(--ease);
+}
+.service-card:hover { background: var(--dark); }
+.service-card:hover h3, .service-card:hover p { color: #fff; }
+.service-card:hover .service-icon { opacity: 1; }
+.service-icon { font-size: 1.6rem; margin-bottom: 20px; opacity: 0.7; transition: opacity 0.5s var(--ease); }
+.service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); transition: color 0.5s var(--ease); }
+.service-card p { font-size: 0.93rem; color: #555; line-height: 1.7; transition: color 0.5s var(--ease); }
+
+/* About */
+.about { padding: 120px 0; background: #fff; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.about-text h2 { font-size: 2.4rem; font-weight: 800; color: var(--dark); margin-bottom: 20px; letter-spacing: -0.02em; }
+.about-text p { font-size: 1.05rem; color: #555; line-height: 1.8; }
+.stats-grid { display: flex; flex-direction: column; gap: 0; border: 1px solid #eee; }
+.stat-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; border-bottom: 1px solid #eee;
+}
+.stat-item:last-child { border-bottom: none; }
+.stat-label { font-size: 0.85rem; color: #666; font-weight: 500; }
+.stat-value { font-size: 1.6rem; font-weight: 800; color: var(--dark); font-variant-numeric: tabular-nums; }
+
+/* Features */
+.features { padding: 100px 0; background: #fafafa; }
+.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 800px; }
+.feature-item {
+  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+  background: #fff; border: 1px solid #eee;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.feature-item:hover { border-color: var(--accent); transform: translateX(4px); }
+.feature-num { font-size: 0.7rem; font-weight: 800; color: var(--accent); width: 24px; text-align: center; }
+.feature-item span { font-size: 0.93rem; font-weight: 500; color: #333; }
+
+/* Testimonial */
+.testimonial { padding: 100px 0; background: #fff; }
+.testimonial-card {
+  max-width: 700px; margin: 0 auto; padding: 48px; border: 1px solid #eee;
+}
+.testimonial-card blockquote { font-size: 1.2rem; font-weight: 400; line-height: 1.7; margin-bottom: 24px; color: #333; font-style: italic; border-left: 3px solid var(--accent); padding-left: 20px; }
+.testimonial-card .author { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+.testimonial-card .role { font-size: 0.82rem; color: #888; margin-top: 4px; }
+
+/* CTA */
+.cta-section {
+  padding: 120px 0; background: var(--dark); text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-grid-bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.cta-content { position: relative; z-index: 2; }
+.cta-content h2 { font-size: 2.6rem; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em; }
+.cta-content p { font-size: 1.05rem; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff;
+  padding: 16px 38px; border-radius: 4px; font-weight: 700; font-size: 1rem;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.4); }
+</style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">RapidFix Auto Repair</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Why Us</a></li>
+        <li><a href="#testimonial">Reviews</a></li>
+        <li><a href="#cta" class="nav-cta">Schedule Service</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-line hero-line-1"></div>
+  <div class="hero-line hero-line-2"></div>
+  <div class="hero-line hero-line-3"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">Auto Repair</div>
+    <h1 class="reveal reveal-d1">Honest Repairs. Fast Turnaround.</h1>
+    <p class="reveal reveal-d2">Trusted auto repair shop providing diagnostics, brake service, engine repair, and maintenance for all makes and models.</p>
+    <a href="#cta" class="hero-cta reveal reveal-d3">Schedule Service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="metrics-bar reveal reveal-d4">
+      <div class="metric-item"><div class="metric-value stat-value" data-value="ASE">ASE</div><div class="metric-label">Master Certified</div></div>
+      <div class="metric-item"><div class="metric-value stat-value" data-value="12,000+">12,000+</div><div class="metric-label">Vehicles Serviced</div></div>
+      <div class="metric-item"><div class="metric-value stat-value" data-value="4.9★">4.9★</div><div class="metric-label">Google Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal reveal-d1">Our Expertise</h2>
+    <p class="section-subtitle reveal reveal-d2">Independent auto repair shop offering full-service vehicle maintenance, diagnostics, brake and suspension work, and engine repair.</p>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-d1">
+        <div class="service-icon">🔍</div>
+        <h3>Diagnostics &amp; Engine Repair</h3>
+        <p>Computer diagnostics, check engine light analysis, engine repair and rebuild, and drivability problem solving.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <div class="service-icon">🛞</div>
+        <h3>Brakes &amp; Suspension</h3>
+        <p>Brake pad and rotor replacement, shock and strut service, alignment, and steering system repair for a safe, smooth ride.</p>
+      </div>
+      <div class="service-card reveal reveal-d3">
+        <div class="service-icon">🔧</div>
+        <h3>Preventative Maintenance</h3>
+        <p>Oil changes, fluid flushes, belt and hose replacement, tire rotations, and multi-point inspections to prevent breakdowns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About</div>
+        <h2>Your Neighborhood Mechanic</h2>
+        <p>RapidFix Auto Repair was founded by ASE Master Technician Carlos Mendez, who spent 15 years at dealerships before opening a shop where honesty and fair pricing come first. We service all makes and models and only recommend repairs you truly need.</p>
+      </div>
+      <div class="stats-grid reveal reveal-d2">
+        <div class="stat-item"><div class="stat-label">Master Certified</div><div class="stat-value" data-value="ASE">ASE</div></div>
+        <div class="stat-item"><div class="stat-label">Vehicles Serviced</div><div class="stat-value" data-value="12,000+">12,000+</div></div>
+        <div class="stat-item"><div class="stat-label">Google Rating</div><div class="stat-value" data-value="4.9★">4.9★</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-label reveal">Differentiators</div>
+    <h2 class="section-title reveal reveal-d1">Our Standards</h2>
+    <div class="features-list">
+      <div class="feature-item reveal reveal-d1">
+        <span class="feature-num">01</span>
+        <span>Free written estimates before any work begins</span>
+      </div>
+      <div class="feature-item reveal reveal-d2">
+        <span class="feature-num">02</span>
+        <span>Digital vehicle inspection reports with photos</span>
+      </div>
+      <div class="feature-item reveal reveal-d3">
+        <span class="feature-num">03</span>
+        <span>Loaner vehicles and shuttle service available</span>
+      </div>
+      <div class="feature-item reveal reveal-d4">
+        <span class="feature-num">04</span>
+        <span>2-year / 24,000-mile warranty on all repairs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" id="testimonial">
+  <div class="section-inner">
+    <div class="testimonial-card reveal">
+      <blockquote>&ldquo;A dealership quoted me $2,800 for a repair. Carlos at RapidFix diagnosed the actual problem, fixed it for $600, and showed me photos of exactly what was wrong. I will never go anywhere else.&rdquo;</blockquote>
+      <div class="author">Diana Marshall</div>
+      <div class="role">Customer Since 2020</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <div class="cta-grid-bg"></div>
+  <div class="section-inner">
+    <div class="cta-content">
+      <h2 class="reveal">Repairs You Can Trust</h2>
+      <p class="reveal reveal-d1">Book your appointment online or call us. We will get you back on the road fast.</p>
+      <a href="#" class="cta-btn reveal reveal-d2">Schedule Service</a>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">RapidFix Auto Repair</p>
+      <p class="footer-copy">&copy; 2026 RapidFix Auto Repair. All rights reserved.</p>
+      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+    </div>
+  </footer>
+
+    <script>
+    (function(){
+      // --- Scroll reveal ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // --- Navbar scroll ---
+      const nav = document.querySelector('.navbar');
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+        lastScroll = y;
+      }, { passive: true });
+
+      // --- Mobile menu ---
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.querySelector('.nav-links');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('open');
+          toggle.classList.toggle('active');
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+          menu.classList.remove('open');
+          toggle.classList.remove('active');
+        }));
+      }
+
+      // --- Smooth scroll ---
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // --- Counter animation ---
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.stat-value').forEach(el => {
+              const text = el.getAttribute('data-value');
+              const match = text.match(/([\d,.]+)/);
+              if (!match) { el.textContent = text; return; }
+              const numStr = match[1].replace(/,/g, '');
+              const target = parseFloat(numStr);
+              const prefix = text.substring(0, text.indexOf(match[1]));
+              const suffix = text.substring(text.indexOf(match[1]) + match[1].length);
+              const hasDecimal = numStr.includes('.');
+              const duration = 1600;
+              const start = performance.now();
+              function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - p, 4);
+                let current = target * ease;
+                let display;
+                if (hasDecimal) { display = current.toFixed(numStr.split('.')[1].length); }
+                else { display = Math.floor(current).toLocaleString(); }
+                el.textContent = prefix + display + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+            });
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('.stats-row, .stats-grid').forEach(el => counterObserver.observe(el));
+    })();
+    </script>
+</body>
+</html>

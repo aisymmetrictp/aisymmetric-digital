@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Accounting &amp; Advisory | Accounting Website</title>
+    <meta name="description" content="Certified public accounting firm specializing in tax planning, small business bookkeeping, payroll, and financial advisory services.">
+    <meta property="og:title" content="Peak Accounting &amp; Advisory - Numbers That Drive Decisions">
+    <meta property="og:description" content="Certified public accounting firm specializing in tax planning, small business bookkeeping, payroll, and financial advisory services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aisymmetricdigital.com/portfolio/peak-accounting/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+    :root {
+      --accent: #1e3a2f;
+      --accent2: #48a078;
+      --dark: #0e1c17;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* --- Navbar --- */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: all 0.4s var(--ease); }
+    .navbar.scrolled { background: rgba(255,255,255,0.82); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: 0 1px 24px rgba(0,0,0,0.08); padding: 10px 0; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 700; font-size: 1.2rem; color: #fff; transition: color 0.3s var(--ease); }
+    .navbar.scrolled .nav-logo { color: var(--dark); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.8); transition: color 0.3s var(--ease); }
+    .nav-links a:hover { color: #fff; }
+    .navbar.scrolled .nav-links a { color: #555; }
+    .navbar.scrolled .nav-links a:hover { color: var(--dark); }
+    .nav-cta { background: var(--accent); color: #fff !important; padding: 10px 22px; border-radius: 100px; font-weight: 600 !important; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .navbar.scrolled .nav-cta { color: #fff !important; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 28px; height: 20px; position: relative; }
+    .nav-toggle span { display: block; width: 100%; height: 2px; background: #fff; position: absolute; left: 0; transition: all 0.3s var(--ease); }
+    .navbar.scrolled .nav-toggle span { background: var(--dark); }
+    .nav-toggle span:nth-child(1) { top: 0; }
+    .nav-toggle span:nth-child(2) { top: 9px; }
+    .nav-toggle span:nth-child(3) { top: 18px; }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg); top: 9px; }
+
+    /* --- Reveal --- */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* --- Footer --- */
+    .site-footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 48px 32px; text-align: center; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-brand { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .footer-copy { font-size: 0.85rem; margin-bottom: 6px; }
+    .footer-credit { font-size: 0.85rem; }
+    .footer-credit a { color: var(--accent); font-weight: 600; }
+    .footer-credit a:hover { text-decoration: underline; }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+      .hero-content h1 { font-size: 2.8rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--dark); flex-direction: column; justify-content: center; align-items: center; gap: 28px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { color: rgba(255,255,255,0.8) !important; font-size: 1.2rem; }
+      .nav-toggle { display: block; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .services-grid, .features-grid { grid-template-columns: 1fr; }
+      .hero-split { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .hero-content h1 { font-size: 1.7rem; }
+      .section-inner { padding: 0 18px; }
+      .stats-row, .stats-grid { flex-direction: column; gap: 20px; }
+    }
+
+/* --- EDITORIAL ARCHETYPE --- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  background: var(--dark); overflow: hidden; position: relative;
+}
+.hero-split {
+  display: flex; align-items: center; max-width: 1200px; margin: 0 auto;
+  padding: 0 32px; width: 100%; gap: 64px;
+}
+.hero-left { flex: 1; }
+.hero-left .hero-eyebrow {
+  font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 20px;
+}
+.hero-left h1 {
+  font-size: 3.8rem; font-weight: 800; color: #fff; line-height: 1.06;
+  letter-spacing: -0.035em; margin-bottom: 24px;
+}
+.hero-left p { font-size: 1.15rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 40px; max-width: 460px; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px; background: transparent;
+  color: #fff; padding: 16px 0; font-weight: 600; font-size: 1rem;
+  border-bottom: 2px solid var(--accent2); transition: gap 0.4s var(--ease);
+}
+.hero-cta:hover { gap: 16px; }
+.hero-cta svg { width: 18px; height: 18px; }
+
+/* Abstract art block */
+.hero-right { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; min-height: 420px; }
+.abstract-art { position: relative; width: 380px; height: 420px; }
+.abstract-shape {
+  position: absolute; border-radius: 4px;
+}
+.abstract-shape-1 {
+  width: 240px; height: 300px; background: var(--accent2); top: 0; right: 0;
+  animation: editFloat1 8s ease-in-out infinite alternate;
+}
+.abstract-shape-2 {
+  width: 200px; height: 200px; background: var(--accent); top: 60px; left: 0; opacity: 0.85;
+  animation: editFloat2 10s ease-in-out infinite alternate;
+}
+.abstract-shape-3 {
+  width: 120px; height: 160px; border: 3px solid rgba(255,255,255,0.2); bottom: 0; right: 40px;
+  animation: editFloat3 12s ease-in-out infinite alternate;
+}
+@keyframes editFloat1 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(-10px,15px) rotate(2deg); } }
+@keyframes editFloat2 { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(12px,-8px) rotate(-3deg); } }
+@keyframes editFloat3 { 0% { transform: translate(0,0); } 100% { transform: translate(-8px,10px); } }
+
+/* Services */
+.services { padding: 120px 0; background: #fff; }
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.section-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent2); margin-bottom: 12px; }
+.section-title { font-size: 2.6rem; font-weight: 800; color: var(--dark); margin-bottom: 16px; letter-spacing: -0.025em; }
+.section-subtitle { font-size: 1.05rem; color: #666; max-width: 540px; margin-bottom: 56px; line-height: 1.7; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.service-card {
+  padding: 40px 0; border-top: 2px solid #eee;
+  transition: border-color 0.5s var(--ease);
+}
+.service-card:hover { border-color: var(--accent2); }
+.service-icon { font-size: 1.8rem; margin-bottom: 20px; }
+.service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
+.service-card p { font-size: 0.95rem; color: #666; line-height: 1.7; }
+
+/* About */
+.about { padding: 120px 0; background: #f8f7f5; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.about-text h2 { font-size: 2.4rem; font-weight: 800; color: var(--dark); margin-bottom: 20px; letter-spacing: -0.02em; }
+.about-text p { font-size: 1.05rem; color: #555; line-height: 1.8; }
+.stats-row { display: flex; gap: 40px; margin-top: 40px; }
+.stat-item { text-align: left; }
+.stat-value { font-size: 2.4rem; font-weight: 800; color: var(--dark); }
+.stat-label { font-size: 0.82rem; color: #888; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Features */
+.features { padding: 100px 0; background: #fff; }
+.features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 800px; }
+.feature-item {
+  display: flex; align-items: center; gap: 14px; padding: 18px 0;
+  border-bottom: 1px solid #eee;
+  transition: transform 0.4s var(--ease);
+}
+.feature-item:hover { transform: translateX(6px); }
+.feature-check { color: var(--accent2); font-weight: 700; font-size: 1.1rem; }
+.feature-item span { font-size: 0.95rem; font-weight: 500; color: #333; }
+
+/* Testimonial */
+.testimonial { padding: 100px 0; background: #f8f7f5; }
+.testimonial-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.testimonial-inner blockquote {
+  font-size: 1.5rem; font-weight: 400; line-height: 1.6; margin-bottom: 28px;
+  color: var(--dark); font-style: italic;
+}
+.testimonial-inner .author { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+.testimonial-inner .role { font-size: 0.85rem; color: #888; margin-top: 4px; }
+
+/* CTA */
+.cta-section { padding: 120px 0; background: var(--dark); text-align: center; }
+.cta-content h2 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em; }
+.cta-content p { font-size: 1.1rem; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent2); color: var(--dark); padding: 18px 42px;
+  border-radius: 4px; font-weight: 700; font-size: 1.05rem;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+</style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Peak Accounting &amp; Advisory</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Why Us</a></li>
+        <li><a href="#testimonial">Reviews</a></li>
+        <li><a href="#cta" class="nav-cta">Schedule a Consultation</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+<section class="hero">
+  <div class="hero-split">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">Accounting</div>
+      <h1 class="reveal reveal-d1">Numbers That Drive Decisions</h1>
+      <p class="reveal reveal-d2">CPA firm delivering tax preparation, bookkeeping, and strategic financial advisory for individuals and growing businesses.</p>
+      <a href="#cta" class="hero-cta reveal reveal-d3">Schedule a Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="hero-right reveal reveal-d2">
+      <div class="abstract-art">
+        <div class="abstract-shape abstract-shape-1"></div>
+        <div class="abstract-shape abstract-shape-2"></div>
+        <div class="abstract-shape abstract-shape-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal reveal-d1">What We Offer</h2>
+    <p class="section-subtitle reveal reveal-d2">Certified public accounting firm specializing in tax planning, small business bookkeeping, payroll, and financial advisory services.</p>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-d1">
+        <div class="service-icon">📋</div>
+        <h3>Tax Planning &amp; Preparation</h3>
+        <p>Individual and business tax preparation with year-round planning strategies to minimize liability and maximize deductions.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <div class="service-icon">📊</div>
+        <h3>Bookkeeping &amp; Payroll</h3>
+        <p>Monthly bookkeeping, payroll processing, sales tax filings, and financial reporting so you can focus on running your business.</p>
+      </div>
+      <div class="service-card reveal reveal-d3">
+        <div class="service-icon">📈</div>
+        <h3>Financial Advisory</h3>
+        <p>Cash flow forecasting, budgeting, entity structuring, and strategic planning for business owners ready to scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">Our Story</div>
+        <h2>Your Financial Partner</h2>
+        <p>Peak Accounting was founded by CPA Margaret Sullivan to provide big-firm expertise with small-firm attention. We serve over 500 individual and business clients, and our proactive approach means fewer surprises at tax time.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="stats-row">
+          <div class="stat-item"><div class="stat-value" data-value="500+">500+</div><div class="stat-label">Clients Served</div></div>
+          <div class="stat-item"><div class="stat-value" data-value="20">20</div><div class="stat-label">Years Experience</div></div>
+          <div class="stat-item"><div class="stat-value" data-value="$12M+">$12M+</div><div class="stat-label">Tax Savings Identified</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-label reveal">Advantages</div>
+    <h2 class="section-title reveal reveal-d1">Why Work With Us</h2>
+    <div class="features-list">
+      <div class="feature-item reveal reveal-d1">
+        <span class="feature-check">&mdash;</span>
+        <span>Secure client portal for document upload and sharing</span>
+      </div>
+      <div class="feature-item reveal reveal-d2">
+        <span class="feature-check">&mdash;</span>
+        <span>Fixed monthly pricing for bookkeeping engagements</span>
+      </div>
+      <div class="feature-item reveal reveal-d3">
+        <span class="feature-check">&mdash;</span>
+        <span>QuickBooks and Xero certified advisors</span>
+      </div>
+      <div class="feature-item reveal reveal-d4">
+        <span class="feature-check">&mdash;</span>
+        <span>IRS audit representation and support included</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" id="testimonial">
+  <div class="section-inner">
+    <div class="testimonial-inner reveal">
+      <blockquote>&ldquo;Peak Accounting restructured our business entity and identified deductions we had been missing for years. They saved us over $18,000 in our first year and our books have never been cleaner.&rdquo;</blockquote>
+      <div class="author">Victor Romanelli</div>
+      <div class="role">Owner, Romanelli Construction</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <div class="section-inner">
+    <div class="cta-content">
+      <h2 class="reveal">Take Control of Your Finances</h2>
+      <p class="reveal reveal-d1">Book a free 30-minute consultation and discover how proactive accounting can grow your bottom line.</p>
+      <a href="#" class="cta-btn reveal reveal-d2">Schedule a Consultation</a>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Peak Accounting &amp; Advisory</p>
+      <p class="footer-copy">&copy; 2026 Peak Accounting &amp; Advisory. All rights reserved.</p>
+      <p class="footer-credit">Designed &amp; built by <strong>AISymmetric Digital</strong> | <a href="https://aisymmetricdigital.com/portfolio">View Portfolio</a></p>
+    </div>
+  </footer>
+
+    <script>
+    (function(){
+      // --- Scroll reveal ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // --- Navbar scroll ---
+      const nav = document.querySelector('.navbar');
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+        lastScroll = y;
+      }, { passive: true });
+
+      // --- Mobile menu ---
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.querySelector('.nav-links');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('open');
+          toggle.classList.toggle('active');
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+          menu.classList.remove('open');
+          toggle.classList.remove('active');
+        }));
+      }
+
+      // --- Smooth scroll ---
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // --- Counter animation ---
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.stat-value').forEach(el => {
+              const text = el.getAttribute('data-value');
+              const match = text.match(/([\d,.]+)/);
+              if (!match) { el.textContent = text; return; }
+              const numStr = match[1].replace(/,/g, '');
+              const target = parseFloat(numStr);
+              const prefix = text.substring(0, text.indexOf(match[1]));
+              const suffix = text.substring(text.indexOf(match[1]) + match[1].length);
+              const hasDecimal = numStr.includes('.');
+              const duration = 1600;
+              const start = performance.now();
+              function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - p, 4);
+                let current = target * ease;
+                let display;
+                if (hasDecimal) { display = current.toFixed(numStr.split('.')[1].length); }
+                else { display = Math.floor(current).toLocaleString(); }
+                el.textContent = prefix + display + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+            });
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('.stats-row, .stats-grid').forEach(el => counterObserver.observe(el));
+    })();
+    </script>
+</body>
+</html>
